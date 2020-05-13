@@ -204,7 +204,7 @@
                         <Button fx:id="btnModifierParking" layoutX="18.0" layoutY="365.0" mnemonicParsing="false" onAction="#modifierParking" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Modifier" textFill="WHITE" />
                         <Button fx:id="btnSupprimerParking" layoutX="235.0" layoutY="309.0" mnemonicParsing="false" onAction="#supprimerParking" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Supprimer" textFill="WHITE" />
                         <Button fx:id="btnAfficherListeVehiculeParParking" layoutX="235.0" layoutY="365.0" mnemonicParsing="false" onAction="#afficherListeVehiculesParParking" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Liste des véhicules par parking" textFill="WHITE" />
-                        <Button fx:id="acceuil1" layoutX="389.0" layoutY="501.0" mnemonicParsing="false" onAction="#retourAcceuil" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: white;" text="Acceuil">
+                        <Button fx:id="acceuil1" layoutX="394.0" layoutY="522.0" mnemonicParsing="false" onAction="#retourAcceuil" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: white;" text="Acceuil">
                             <font>
                                 <Font name="Consolas Bold" size="13.0" />
                             </font>
@@ -274,6 +274,7 @@
                                 <FontAwesomeIconView glyphName="SEARCH" size="30" />
                             </graphic>
                         </Button>
+                  <Button fx:id="btnDeposerRestituer" layoutX="216.0" layoutY="449.0" mnemonicParsing="false" onAction="#deposerRestituerAnchor" prefHeight="47.0" prefWidth="220.0" style="-fx-background-color: #63AED9;" stylesheets="@../css/style.css" text="Déposer ou Réstituer" textFill="WHITE" />
                     </children>
                 </AnchorPane>
             </children>

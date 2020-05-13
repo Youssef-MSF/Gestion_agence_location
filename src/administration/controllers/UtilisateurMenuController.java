@@ -605,6 +605,6 @@ public class UtilisateurMenuController implements Initializable {
     }
 
 
-
-
+    public void deposerRestituerAnchor(ActionEvent actionEvent) {
+    }
 }
