@@ -2,6 +2,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
@@ -170,36 +171,6 @@
                 </AnchorPane>
                 <AnchorPane fx:id="gestionParkings" prefHeight="554.0" prefWidth="945.0" style="-fx-background-color: #B1ADEE;">
                     <children>
-                        <TextField fx:id="codeParkingField" layoutX="15.0" layoutY="63.0" prefHeight="37.0" prefWidth="165.0" promptText="Code parking" />
-                        <Label layoutX="15.0" layoutY="30.0" prefHeight="30.0" prefWidth="129.0" text="code parking:">
-                            <font>
-                                <Font name="Algerian" size="16.0" />
-                            </font>
-                        </Label>
-                        <TextField fx:id="arrondissementField" layoutX="15.0" layoutY="148.0" prefHeight="37.0" prefWidth="165.0" promptText="Arrondissement" />
-                        <Label layoutX="15.0" layoutY="115.0" prefHeight="30.0" prefWidth="148.0" text="arrondissement:">
-                            <font>
-                                <Font name="Algerian" size="16.0" />
-                            </font>
-                        </Label>
-                        <TextField fx:id="rueField" layoutX="258.0" layoutY="61.0" prefHeight="37.0" prefWidth="165.0" promptText="Rue" />
-                        <Label layoutX="258.0" layoutY="28.0" prefHeight="30.0" prefWidth="95.0" text="rue:">
-                            <font>
-                                <Font name="Algerian" size="16.0" />
-                            </font>
-                        </Label>
-                        <TextField fx:id="capaciteField" layoutX="258.0" layoutY="146.0" prefHeight="37.0" prefWidth="165.0" promptText="Capacité" />
-                        <Label layoutX="258.0" layoutY="113.0" prefHeight="30.0" prefWidth="119.0" text="capacité:">
-                            <font>
-                                <Font name="Algerian" size="16.0" />
-                            </font>
-                        </Label>
-                        <TextField fx:id="nbrePlacesVidesField" layoutX="14.0" layoutY="235.0" prefHeight="37.0" prefWidth="165.0" promptText="Nombre de places vides" />
-                        <Label layoutX="14.0" layoutY="205.0" prefHeight="30.0" prefWidth="234.0" text="nombre de places vides:">
-                            <font>
-                                <Font name="Algerian" size="16.0" />
-                            </font>
-                        </Label>
                         <Button fx:id="btnAjouterParking" layoutX="18.0" layoutY="309.0" mnemonicParsing="false" onAction="#ajouterParking" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Ajouter" textFill="WHITE" />
                         <Button fx:id="btnModifierParking" layoutX="18.0" layoutY="365.0" mnemonicParsing="false" onAction="#modifierParking" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Modifier" textFill="WHITE" />
                         <Button fx:id="btnSupprimerParking" layoutX="235.0" layoutY="309.0" mnemonicParsing="false" onAction="#supprimerParking" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Supprimer" textFill="WHITE" />
@@ -275,6 +246,63 @@
                             </graphic>
                         </Button>
                   <Button fx:id="btnDeposerRestituer" layoutX="216.0" layoutY="449.0" mnemonicParsing="false" onAction="#deposerRestituerAnchor" prefHeight="47.0" prefWidth="220.0" style="-fx-background-color: #63AED9;" stylesheets="@../css/style.css" text="Déposer ou Réstituer" textFill="WHITE" />
+                  <StackPane layoutX="1.0" layoutY="1.0">
+                     <children>
+                        <AnchorPane fx:id="deposerRestituerAnchor" prefHeight="299.0" prefWidth="449.0" style="-fx-background-color: #B1ADEE;">
+                           <children>
+                              <Label layoutX="35.0" layoutY="41.0" prefHeight="30.0" prefWidth="182.0" text="Vehicule a deposer:">
+                                 <font>
+                                    <Font name="Algerian" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="270.0" layoutY="40.0" prefHeight="30.0" prefWidth="158.0" text="code Parkng:">
+                                 <font>
+                                    <Font name="Algerian" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="btnDeposer" layoutX="367.0" layoutY="186.0" mnemonicParsing="false" onAction="#deposerVehicule" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: #1E7F7F;" stylesheets="@../css/style.css" text="Déposer" textFill="WHITE" />
+                              <ComboBox fx:id="vehiculeComboBox" layoutX="35.0" layoutY="86.0" prefHeight="38.0" prefWidth="165.0" promptText="Liste des matricules" visibleRowCount="6" />
+                              <ComboBox fx:id="parkingComboBox" layoutX="270.0" layoutY="86.0" prefHeight="38.0" prefWidth="165.0" promptText="Liste des parkings" visibleRowCount="6" />
+                              <AnchorPane layoutY="266.0" prefHeight="5.0" prefWidth="484.0" style="-fx-background-color: #8B85E6;" />
+                              <Button fx:id="btnRetourPrincipaleFields" layoutX="14.0" layoutY="186.0" mnemonicParsing="false" onAction="#retourPrincipaleFieldsParkings" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: #BE8092;" stylesheets="@../css/style.css" text="Retour" textFill="WHITE" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="principaleFieldsAnchor" prefHeight="299.0" prefWidth="449.0" style="-fx-background-color: #B1ADEE;">
+                           <children>
+                              <TextField fx:id="codeParkingField" layoutX="13.0" layoutY="47.0" prefHeight="37.0" prefWidth="165.0" promptText="Code parking" />
+                              <Label layoutX="15.0" layoutY="10.0" prefHeight="30.0" prefWidth="129.0" text="code parking:">
+                                 <font>
+                                    <Font name="Algerian" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="arrondissementField" layoutX="270.0" layoutY="145.0" prefHeight="37.0" prefWidth="165.0" promptText="Arrondissement" />
+                              <Label layoutX="270.0" layoutY="106.0" prefHeight="30.0" prefWidth="148.0" text="arrondissement:">
+                                 <font>
+                                    <Font name="Algerian" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="rueField" layoutX="270.0" layoutY="48.0" prefHeight="37.0" prefWidth="165.0" promptText="Rue" />
+                              <Label layoutX="269.0" layoutY="10.0" prefHeight="30.0" prefWidth="95.0" text="rue:">
+                                 <font>
+                                    <Font name="Algerian" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="capaciteField" layoutX="13.0" layoutY="144.0" prefHeight="37.0" prefWidth="165.0" promptText="Capacité" />
+                              <Label layoutX="15.0" layoutY="104.0" prefHeight="30.0" prefWidth="119.0" text="capacité:">
+                                 <font>
+                                    <Font name="Algerian" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="nbrePlacesVidesField" layoutX="13.0" layoutY="242.0" prefHeight="37.0" prefWidth="165.0" promptText="Nombre de places vides" />
+                              <Label layoutX="13.0" layoutY="205.0" prefHeight="30.0" prefWidth="234.0" text="nombre de places vides:">
+                                 <font>
+                                    <Font name="Algerian" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
                     </children>
                 </AnchorPane>
             </children>

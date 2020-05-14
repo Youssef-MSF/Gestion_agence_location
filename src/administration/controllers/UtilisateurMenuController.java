@@ -167,6 +167,22 @@ public class UtilisateurMenuController implements Initializable {
     private Button btnAfficherListeVehiculeParParking;
 
     @FXML
+    private ComboBox<String> vehiculeComboBox;
+
+    @FXML
+    private ComboBox<String> parkingComboBox;
+
+    @FXML
+    private TextField matriculeVehiculeADeposer;
+
+    @FXML
+    private AnchorPane deposerRestituerAnchor;
+
+    @FXML
+    private AnchorPane principaleFieldsAnchor;
+
+
+    @FXML
     private TabPane listeParkings;
 
     @FXML
@@ -223,15 +239,53 @@ public class UtilisateurMenuController implements Initializable {
     PreparedStatement pat;
     boolean rs;
 
+    ObservableList<Vehicule> vehcleListe = FXCollections.observableArrayList();
+    ObservableList<Parking> parkListe = FXCollections.observableArrayList();
+    ObservableList<String> vehiculesListeComboBox = FXCollections.observableArrayList();
+    ObservableList<String> parkingsListeComboBox = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        vehiculeComboBox.getItems().clear();
+        parkingComboBox.getItems().clear();
+
+        Connection con = null;
+        try {
+            con = DBConnect.getConnection();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            assert con != null;
+            ResultSet res = con.createStatement().executeQuery("SELECT matricule FROM vehicule");
+
+            while (res.next()) {
+                vehiculesListeComboBox.add(res.getString("matricule"));
+                //parkingsListeComboBox.add(res.getString("codeParking"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            ResultSet res = con.createStatement().executeQuery("SELECT codeParking FROM parking");
+
+            while (res.next()) {
+                parkingsListeComboBox.add(res.getString("codeParking"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
+        vehiculeComboBox.setItems(vehiculesListeComboBox);
+        parkingComboBox.setItems(parkingsListeComboBox);
 
     }
 
     //Les traitements liées au gestion des véhicules
-
-    ObservableList<Vehicule> vehcleListe = FXCollections.observableArrayList();
-    ObservableList<Parking> parkListe = FXCollections.observableArrayList();
 
     @FXML
     void SaveVehicule(ActionEvent event) {
@@ -606,5 +660,22 @@ public class UtilisateurMenuController implements Initializable {
 
 
     public void deposerRestituerAnchor(ActionEvent actionEvent) {
+        deposerRestituerAnchor.toFront();
+    }
+
+    public void deposerVehicule(ActionEvent actionEvent) {
+        String selectedMatriculeComboBox = vehiculeComboBox.getSelectionModel().getSelectedItem();
+        String selectedCodeParkingComboBox = parkingComboBox.getSelectionModel().getSelectedItem();
+
+        utilisateur.deposerVehiculeDansParking(selectedMatriculeComboBox, selectedCodeParkingComboBox);
+
+        this.populateVehiculeListeParParking();
+    }
+
+
+    public void retourPrincipaleFieldsParkings(ActionEvent actionEvent) {
+
+        principaleFieldsAnchor.toFront();
+
     }
 }

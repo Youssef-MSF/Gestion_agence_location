@@ -36,7 +36,9 @@ public class Main extends Application {
                     "    carburant VARCHAR(255),\n" +
                     "    compteurKM VARCHAR(10),\n" +
                     "    dateMiseEnCirculation VARCHAR(100),\n" +
-                    "    nParkingAssocie VARCHAR(100))");
+                    "    nParkingAssocie VARCHAR(100),\n" +
+                    "    is_Sortis INTEGER DEFAULT 0,\n" +
+                    "    is_deposer INTEGER DEFAULT 0)");
 
             rs = pat.execute();
 

@@ -288,13 +288,13 @@ public class Utilisateur {
         return false;
     }
 
-    public boolean deposerVehiculeDansParking(Vehicule vehiculeAdeposer, Parking parkingConcerne){
+    public boolean deposerVehiculeDansParking(String matricule, String codeParking){
         try {
             con = DBConnect.getConnection();
-            pat = con.prepareStatement("UPDATE vehicule SET nParkingAssocie=? WHERE matricule=?");
+            pat = con.prepareStatement("UPDATE vehicule SET nParkingAssocie=?, is_deposer=1 WHERE matricule=?");
 
-            pat.setString(2, parkingConcerne.getCodeParking());
-            pat.setString(1, vehiculeAdeposer.getMatricule());
+            pat.setString(1, codeParking);
+            pat.setString(2, matricule);
 
             rs = pat.execute();
 
@@ -312,6 +312,11 @@ public class Utilisateur {
 
         return false;
     }
+
+    public boolean faireSortirVehiculeDuParking(){
+        return true;
+    }
+
 
 
 }
