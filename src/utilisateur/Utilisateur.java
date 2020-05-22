@@ -2,9 +2,7 @@ package utilisateur;
 
 import administration.DBConnect;
 import administration.controllers.UtilisateurMenuController;
-import modules.Client;
-import modules.Parking;
-import modules.Vehicule;
+import modules.*;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -313,10 +311,302 @@ public class Utilisateur {
         return false;
     }
 
-    public boolean faireSortirVehiculeDuParking(){
-        return true;
+    public boolean faireSortirVehiculeDuParking(String matricule){
+        try {
+            con = DBConnect.getConnection();
+            pat = con.prepareStatement("UPDATE vehicule SET is_Sortis=1, is_deposer=1 WHERE matricule=?");
+
+            pat.setString(1, matricule);
+
+            rs = pat.execute();
+
+            if (!rs) {
+                JOptionPane.showMessageDialog(null, "Le véhicule a été bien sortis de son parking.");
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Le véhicule n'est pas sortis correctement.");
+                return false;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public boolean restituerVehicule(String matricule){
+        try {
+            con = DBConnect.getConnection();
+            pat = con.prepareStatement("UPDATE vehicule SET is_Sortis=0, is_deposer=1 WHERE matricule=?");
+
+            pat.setString(1, matricule);
+
+            rs = pat.execute();
+
+            if (!rs) {
+                JOptionPane.showMessageDialog(null, "Le véhicule a été bien réstituer.");
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Le véhicule n'est pas réstituer correctement.");
+                return false;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 
 
+    //Module des Contrats
+
+    public boolean ajouterContrat(Contrat nouveauContrat){
+
+        try {
+            con = DBConnect.getConnection();
+            pat = con.prepareStatement("INSERT INTO contrat(codeContrat, dateContrat, dateEcheanceContrat) VALUES(?, ?, ?)");
+
+            pat.setString(1, nouveauContrat.getCodeContrat());
+            pat.setString(2, nouveauContrat.getDateContrat());
+            pat.setString(3, nouveauContrat.getDateEcheanceContrat());
+
+            rs = pat.execute();
+
+            if (!rs) {
+                JOptionPane.showMessageDialog(null, "Ajout avec succès !!");
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "L'ajout n'est pas réalisé :(");
+                return false;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+
+    }
+
+    public boolean supprimerContrat(Contrat contratASupprimer){
+
+        try {
+            con = DBConnect.getConnection();
+            pat = con.prepareStatement("DELETE FROM contrat WHERE codeContrat=?");
+
+            pat.setString(1, contratASupprimer.getCodeContrat());
+
+            rs = pat.execute();
+
+            if (!rs) {
+                JOptionPane.showMessageDialog(null, "Suppression avec succès !!");
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "La suppression n'est pas réalisé :(");
+                return false;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+
+    }
+    public boolean modifierContrat(Contrat contratAModifier){
+        try {
+            con = DBConnect.getConnection();
+            pat = con.prepareStatement("UPDATE contrat SET codeContrat=?, dateContrat=?, dateEcheanceContrat=? WHERE codeContrat=?");
+
+            pat.setString(1, contratAModifier.getCodeContrat());
+            pat.setString(2, contratAModifier.getDateContrat());
+            pat.setString(3, contratAModifier.getDateEcheanceContrat());
+            pat.setString(4, contratAModifier.getCodeContrat());
+
+            rs = pat.execute();
+
+            if (!rs) {
+                JOptionPane.showMessageDialog(null, "Modification avec succès !!");
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "La modification n'est pas réalisé :(");
+                return false;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public void chercherContrat(){
+
+    }
+    public void afficherContrat(){
+
+    }
+
+
+
+    //Module des Réservations
+
+    public boolean ajouterReservation(Reservation nouvelleReservation){
+        try {
+            con = DBConnect.getConnection();
+            pat = con.prepareStatement("INSERT INTO reservation(codeReservation, dateReservation, dateDepart, dateRetour) VALUES(?, ?, ?, ?)");
+
+            pat.setString(1, nouvelleReservation.getCodeReservation());
+            pat.setString(2, nouvelleReservation.getDateReservation());
+            pat.setString(3, nouvelleReservation.getDateDepart());
+            pat.setString(4, nouvelleReservation.getDateRetour());
+
+            rs = pat.execute();
+
+            if (!rs) {
+                JOptionPane.showMessageDialog(null, "Ajout avec succès !!");
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "L'ajout n'est pas réalisé :(");
+                return false;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public boolean supprimerReservation(Reservation reservationASupprimer){
+        try {
+            con = DBConnect.getConnection();
+            pat = con.prepareStatement("DELETE FROM reservation WHERE codeReservation=?");
+
+            pat.setString(1, reservationASupprimer.getCodeReservation());
+
+            rs = pat.execute();
+
+            if (!rs) {
+                JOptionPane.showMessageDialog(null, "Suppression avec succès !!");
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "La suppression n'est pas réalisé :(");
+                return false;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean modifierReservation(Reservation reservationAModifier){
+        try {
+            con = DBConnect.getConnection();
+            pat = con.prepareStatement("UPDATE reservation SET codeReservation=?, dateReservation=?, dateDepart=?, dateRetour=? WHERE codeReservation=?");
+
+            pat.setString(1, reservationAModifier.getCodeReservation());
+            pat.setString(2, reservationAModifier.getDateReservation());
+            pat.setString(3, reservationAModifier.getDateDepart());
+            pat.setString(4, reservationAModifier.getDateRetour());
+            pat.setString(5, reservationAModifier.getCodeReservation());
+
+            rs = pat.execute();
+
+            if (!rs) {
+                JOptionPane.showMessageDialog(null, "Modification avec succès !!");
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "La modification n'est pas réalisé :(");
+                return false;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+
+// Module des factures
+
+    public boolean ajouterFacture(Facture nouvelleFacture){
+        try {
+            con = DBConnect.getConnection();
+            pat = con.prepareStatement("INSERT INTO facture(codeFacture, dateFacture, montant) VALUES(?, ?, ?)");
+
+            pat.setString(1, nouvelleFacture.getCodeFacture());
+            pat.setString(2, nouvelleFacture.getDateFacture());
+            pat.setString(3, Double.toString(nouvelleFacture.getMontantPayer()));
+
+            rs = pat.execute();
+
+            if (!rs) {
+                JOptionPane.showMessageDialog(null, "Ajout avec succès !!");
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "L'ajout n'est pas réalisé :(");
+                return false;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public boolean supprimerFacture(Facture factureASupprimer){
+        try {
+            con = DBConnect.getConnection();
+            pat = con.prepareStatement("DELETE FROM facture WHERE codeFacture=?");
+
+            pat.setString(1, factureASupprimer.getCodeFacture());
+
+            rs = pat.execute();
+
+            if (!rs) {
+                JOptionPane.showMessageDialog(null, "Suppression avec succès !!");
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "La suppression n'est pas réalisé :(");
+                return false;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean modifierFacture(Facture factureAModifier){
+        try {
+            con = DBConnect.getConnection();
+            pat = con.prepareStatement("UPDATE facture SET codeFacture=?, dateFacture=?, montant=? WHERE codeFacture=?");
+
+            pat.setString(1, factureAModifier.getCodeFacture());
+            pat.setString(2, factureAModifier.getDateFacture());
+            pat.setString(3, Double.toString(factureAModifier.getMontantPayer()));
+            pat.setString(4, factureAModifier.getCodeFacture());
+
+            rs = pat.execute();
+
+            if (!rs) {
+                JOptionPane.showMessageDialog(null, "Modification avec succès !!");
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "La modification n'est pas réalisé :(");
+                return false;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
 
 }

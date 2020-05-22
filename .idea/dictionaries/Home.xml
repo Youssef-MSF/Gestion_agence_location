@@ -3,32 +3,43 @@
     <words>
       <w>adresse</w>
       <w>afficher</w>
+      <w>ajouter</w>
+      <w>annulee</w>
       <w>arrondissement</w>
       <w>associe</w>
       <w>capacite</w>
       <w>carburant</w>
+      <w>chercher</w>
       <w>compteur</w>
       <w>contrat</w>
+      <w>contrats</w>
       <w>coordonnées</w>
       <w>deposer</w>
+      <w>echeance</w>
       <w>facture</w>
       <w>gestion</w>
       <w>informations</w>
       <w>liste</w>
+      <w>liées</w>
       <w>matricule</w>
       <w>mise</w>
       <w>montant</w>
       <w>nouveau</w>
       <w>prenom</w>
       <w>prénom</w>
+      <w>remplir</w>
       <w>retour</w>
       <w>selectionner</w>
+      <w>sortis</w>
       <w>supprimer</w>
       <w>suspendre</w>
+      <w>traitements</w>
       <w>utilisateur</w>
       <w>vehicule</w>
       <w>vehicules</w>
+      <w>veuillez</w>
       <w>vides</w>
+      <w>vous</w>
       <w>youssef</w>
     </words>
   </dictionary>

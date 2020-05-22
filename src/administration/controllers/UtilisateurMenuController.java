@@ -10,8 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import modules.Parking;
-import modules.Vehicule;
+import modules.*;
 import utilisateur.Utilisateur;
 
 import javax.swing.*;
@@ -136,6 +135,33 @@ public class UtilisateurMenuController implements Initializable {
     private AnchorPane vehiculeImageContainer;
 
     @FXML
+    private AnchorPane parkingImageContainer;
+
+    @FXML
+    private TableView<Vehicule> listeVehiculeParParking2;
+
+    @FXML
+    private TableColumn<Vehicule, String> col_matricule2;
+
+    @FXML
+    private TableColumn<Vehicule, String> col_marque2;
+
+    @FXML
+    private TableColumn<Vehicule, String> col_type2;
+
+    @FXML
+    private TableColumn<Vehicule, String> col_carburant2;
+
+    @FXML
+    private TableColumn<Vehicule, String> col_compteur2;
+
+    @FXML
+    private TableColumn<Vehicule, String> col_date2;
+
+    @FXML
+    private TableColumn<Vehicule, String> col_nParkingAssocie2;
+
+    @FXML
     private Label gestionTitre;
 
     //Variables pour Parking
@@ -181,6 +207,11 @@ public class UtilisateurMenuController implements Initializable {
     @FXML
     private AnchorPane principaleFieldsAnchor;
 
+    @FXML
+    private AnchorPane faireSortirAnchor;
+
+    @FXML
+    private AnchorPane restituerAnchor;
 
     @FXML
     private TabPane listeParkings;
@@ -233,6 +264,210 @@ public class UtilisateurMenuController implements Initializable {
     @FXML
     private Button btnChercherParking;
 
+    @FXML
+    private ComboBox<String> matriculeComboBoxSortir;
+
+    @FXML
+    private ComboBox<String> matriculeRestituer;
+
+    // Variables pour contrats
+
+
+    @FXML
+    private AnchorPane gestionContrats;
+
+    @FXML
+    private Button btnAjouterContrat;
+
+    @FXML
+    private Button btnModifierContrat;
+
+    @FXML
+    private Button btnSupprimerContrat;
+
+    @FXML
+    private Button btnAfficherListesContrats;
+
+    @FXML
+    private Button acceuil11;
+
+    @FXML
+    private Button btnSaveModifContrat;
+
+    @FXML
+    private TextField rechercherContratField;
+
+    @FXML
+    private AnchorPane parkingImageContainer1;
+
+    @FXML
+    private ImageView imgParking1;
+
+    @FXML
+    private TableView<Contrat> listeContrats;
+
+    @FXML
+    private TableColumn<Contrat, String> col_nContrat;
+
+    @FXML
+    private TableColumn<Contrat, String> col_dateContrat;
+
+    @FXML
+    private TableColumn<Contrat, String> col_dateEcheance;
+
+    @FXML
+    private Button btnChercherContrat;
+
+    @FXML
+    private AnchorPane principaleFieldsAnchor1;
+
+    @FXML
+    private TextField nContartfield;
+
+    @FXML
+    private DatePicker dateContratField;
+
+    @FXML
+    private DatePicker dateEcheanceContratField;
+
+    // Variables pour réservations
+
+    @FXML
+    private AnchorPane gestionReservations;
+
+    @FXML
+    private Button btnAjouterReservation;
+
+    @FXML
+    private Button btnModifierReservation;
+
+    @FXML
+    private Button btnSupprimerReservation;
+
+    @FXML
+    private Button btnAfficherListesReservations;
+
+    @FXML
+    private Button acceuil111;
+
+    @FXML
+    private Button btnSaveModifReseravtion;
+
+    @FXML
+    private TextField rechercherReservationField;
+
+    @FXML
+    private AnchorPane parkingImageContainer11;
+
+    @FXML
+    private ImageView imgParking11;
+
+    @FXML
+    private TableView<Reservation> listeReservations;
+
+    @FXML
+    private TableColumn<Reservation, String> col_codeReservation;
+
+    @FXML
+    private TableColumn<Reservation, String> col_dateReservation;
+
+    @FXML
+    private TableColumn<Reservation, String> col_dateDepart;
+
+    @FXML
+    private TableColumn<Reservation, String> col_dateRetour;
+
+    @FXML
+    private Button btnChercherReservation;
+
+    @FXML
+    private AnchorPane principaleFieldsAnchor11;
+
+    @FXML
+    private TextField codeReservationField;
+
+    @FXML
+    private DatePicker dateReservationField;
+
+    @FXML
+    private DatePicker dateDepartField;
+
+    @FXML
+    private DatePicker dateRetourField;
+
+    @FXML
+    private ComboBox<String> listeVehiculeAreserver;
+
+    @FXML
+    private ComboBox<String> listeClientReserver;
+
+    @FXML
+    private ComboBox<String> listeReservationCombobox;
+
+
+    // Variables pour gestion des factures
+
+    @FXML
+    private AnchorPane gestionFactures;
+
+    @FXML
+    private Button btnAjouterFacture;
+
+    @FXML
+    private Button btnModifierFacture;
+
+    @FXML
+    private Button btnSupprimerFacture;
+
+    @FXML
+    private Button btnAfficherListesFacture;
+
+    @FXML
+    private Button acceuil1111;
+
+    @FXML
+    private Button btnSaveModifFacture;
+
+    @FXML
+    private TextField rechercherFactureField;
+
+    @FXML
+    private AnchorPane parkingImageContainer111;
+
+    @FXML
+    private ImageView imgParking111;
+
+    @FXML
+    private TableView<Facture> listeFactures;
+
+    @FXML
+    private TableColumn<Facture, String> col_codeFacture;
+
+    @FXML
+    private TableColumn<Facture, String> col_dateFacture;
+
+    @FXML
+    private TableColumn<Facture, Double> col_montant;
+
+    @FXML
+    private Button btnChercherFacture;
+
+    @FXML
+    private AnchorPane principaleFieldsAnchor111;
+
+    @FXML
+    private TextField codeFactureField;
+
+    @FXML
+    private DatePicker dateFactureField;
+
+    @FXML
+    private TextField montantPayerField;
+
+    @FXML
+    private ComboBox<String> listeContratsCombobox;
+
+
     //Traitements
 
     Connection conn;
@@ -243,45 +478,76 @@ public class UtilisateurMenuController implements Initializable {
     ObservableList<Parking> parkListe = FXCollections.observableArrayList();
     ObservableList<String> vehiculesListeComboBox = FXCollections.observableArrayList();
     ObservableList<String> parkingsListeComboBox = FXCollections.observableArrayList();
+    ObservableList<String> vehiculesAresererListe = FXCollections.observableArrayList();
+    ObservableList<String> clientReservant = FXCollections.observableArrayList();
+    ObservableList<String> reservationListeCombobox = FXCollections.observableArrayList();
+    ObservableList<Contrat> contratListe = FXCollections.observableArrayList();
+    ObservableList<Reservation> reservationListe = FXCollections.observableArrayList();
+    ObservableList<Facture> factureListe = FXCollections.observableArrayList();
+    ObservableList<String> contratListeCombobox = FXCollections.observableArrayList();
+    ObservableList<String> matriculeComboBoxSortirListe = FXCollections.observableArrayList();
+    ObservableList<String> matriculeRestituerComboBox = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        vehiculeComboBox.getItems().clear();
-        parkingComboBox.getItems().clear();
 
-        Connection con = null;
+        this.populateComboxes();
+
+        String matriculeReserve = null;
+
         try {
-            con = DBConnect.getConnection();
+            conn = DBConnect.getConnection();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
         try {
-            assert con != null;
-            ResultSet res = con.createStatement().executeQuery("SELECT matricule FROM vehicule");
+            assert conn != null;
+            ResultSet res = conn.createStatement().executeQuery("SELECT matricule FROM operation");
 
             while (res.next()) {
-                vehiculesListeComboBox.add(res.getString("matricule"));
-                //parkingsListeComboBox.add(res.getString("codeParking"));
+                matriculeReserve = res.getString("matricule");
+
+                try {
+                    pat = conn.prepareStatement("UPDATE vehicule SET is_reserve=1 WHERE matricule=?");
+
+                    pat.setString(1, matriculeReserve);
+
+                    rs = pat.execute();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        // Pour la validation des réservations
+
+        String codeReservationAvalide = null;
 
         try {
-            ResultSet res = con.createStatement().executeQuery("SELECT codeParking FROM parking");
+            assert conn != null;
+            ResultSet res = conn.createStatement().executeQuery("SELECT codeReservation FROM operation WHERE matricule NOT LIKE \"\" AND codeContrat NOT LIKE \"\" AND codeClient NOT LIKE \"\" AND codeFacture NOT LIKE \"\"");
 
             while (res.next()) {
-                parkingsListeComboBox.add(res.getString("codeParking"));
+                codeReservationAvalide = res.getString("codeReservation");
+
+                try {
+                    pat = conn.prepareStatement("UPDATE reservation SET is_valid=1 WHERE codeReservation=?");
+
+                    pat.setString(1, codeReservationAvalide);
+
+                    rs = pat.execute();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-
-        vehiculeComboBox.setItems(vehiculesListeComboBox);
-        parkingComboBox.setItems(parkingsListeComboBox);
 
     }
 
@@ -306,7 +572,7 @@ public class UtilisateurMenuController implements Initializable {
     }
 
     @FXML
-    void afficherListeVehicules(ActionEvent event) {
+    public void afficherListeVehicules(ActionEvent event) {
 
         vehiculeListe.toFront();
 
@@ -336,22 +602,57 @@ public class UtilisateurMenuController implements Initializable {
 
         }
 
+        this.populateComboxes();
+
     }
 
     @FXML
     void handleClicks(ActionEvent event) {
         if (event.getSource() == btnVehicules) {
-            vehiculeListe.toBack();
+            parkingImageContainer.toFront();
             btnVehicules.setStyle("-fx-background-color:#9656CD");
             btnParkings.setStyle("");
+            btnContrats.setStyle("");
+            btnReservations.setStyle("");
+            btnFactures.setStyle("");
             gestionTitre.setText("Gestion des véhicules");
             gestionVehicules.toFront();
         } else if (event.getSource() == btnParkings) {
-            listeParkings.toBack();
+            vehiculeImageContainer.toFront();
             btnParkings.setStyle("-fx-background-color:#9656CD");
             btnVehicules.setStyle("");
+            btnContrats.setStyle("");
+            btnReservations.setStyle("");
+            btnFactures.setStyle("");
             gestionTitre.setText("Gestion des parkings");
             gestionParkings.toFront();
+        } else if (event.getSource() == btnContrats) {
+            parkingImageContainer1.toFront();
+            btnContrats.setStyle("-fx-background-color:#9656CD");
+            btnVehicules.setStyle("");
+            btnParkings.setStyle("");
+            btnReservations.setStyle("");
+            btnFactures.setStyle("");
+            gestionTitre.setText("Gestion des contrats");
+            gestionContrats.toFront();
+        } else if (event.getSource() == btnReservations) {
+            parkingImageContainer1.toFront();
+            btnReservations.setStyle("-fx-background-color:#9656CD");
+            btnVehicules.setStyle("");
+            btnParkings.setStyle("");
+            btnContrats.setStyle("");
+            btnFactures.setStyle("");
+            gestionTitre.setText("Gestion des réservations");
+            gestionReservations.toFront();
+        } else if (event.getSource() == btnFactures) {
+            parkingImageContainer1.toFront();
+            btnFactures.setStyle("-fx-background-color:#9656CD");
+            btnVehicules.setStyle("");
+            btnParkings.setStyle("");
+            btnContrats.setStyle("");
+            btnReservations.setStyle("");
+            gestionTitre.setText("Gestion des factures");
+            gestionFactures.toFront();
         }
     }
 
@@ -391,9 +692,7 @@ public class UtilisateurMenuController implements Initializable {
     @FXML
     void chercherVehicule(ActionEvent event) {
 
-        vehiculeListe.toFront();
-
-        vehiculeListe.getItems().clear();
+        listeVehiculeParParking2.getItems().clear();
 
         Connection con = null;
         try {
@@ -417,14 +716,17 @@ public class UtilisateurMenuController implements Initializable {
         }
 
 
-        col_matricule.setCellValueFactory(new PropertyValueFactory<>("matricule"));
-        col_marque.setCellValueFactory(new PropertyValueFactory<>("marque"));
-        col_type.setCellValueFactory(new PropertyValueFactory<>("type"));
-        col_carburant.setCellValueFactory(new PropertyValueFactory<>("carburant"));
-        col_compteur.setCellValueFactory(new PropertyValueFactory<>("compteurKM"));
-        col_date.setCellValueFactory(new PropertyValueFactory<>("dateMiseEnCirculation"));
+        col_matricule2.setCellValueFactory(new PropertyValueFactory<>("matricule"));
+        col_marque2.setCellValueFactory(new PropertyValueFactory<>("marque"));
+        col_type2.setCellValueFactory(new PropertyValueFactory<>("type"));
+        col_carburant2.setCellValueFactory(new PropertyValueFactory<>("carburant"));
+        col_compteur2.setCellValueFactory(new PropertyValueFactory<>("compteurKM"));
+        col_date2.setCellValueFactory(new PropertyValueFactory<>("dateMiseEnCirculation"));
+        col_nParkingAssocie2.setCellValueFactory(new PropertyValueFactory<>("nParkingAssocie"));
 
-        vehiculeListe.setItems(vehcleListe);
+        listeVehiculeParParking2.setItems(vehcleListe);
+
+        listeVehiculeParParking2.toFront();
 
     }
 
@@ -487,6 +789,7 @@ public class UtilisateurMenuController implements Initializable {
             arrondissementField.setText("");
             nbrePlacesVidesField.setText("");
         }
+        this.populateComboxes();
     }
 
     public void modifierParking(ActionEvent actionEvent) {
@@ -515,7 +818,7 @@ public class UtilisateurMenuController implements Initializable {
 
     private void selectionnerParking() {
 
-        Parking selectedParking= listeParking.getSelectionModel().getSelectedItem();
+        Parking selectedParking = listeParking.getSelectionModel().getSelectedItem();
 
         codeParkingField.setText(selectedParking.getCodeParking());
         capaciteField.setText(Integer.toString(selectedParking.getCapacite()));
@@ -590,7 +893,6 @@ public class UtilisateurMenuController implements Initializable {
         listeVehiculeParParking.setItems(vehcleListe);
 
 
-
         listeParking.getItems().clear();
 
         try {
@@ -618,6 +920,112 @@ public class UtilisateurMenuController implements Initializable {
 
         listeParking.setItems(parkListe);
 
+    }
+
+    public void populateComboxes() {
+        vehiculeComboBox.getItems().clear();
+        parkingComboBox.getItems().clear();
+        listeVehiculeAreserver.getItems().clear();
+
+        Connection con = null;
+        try {
+            con = DBConnect.getConnection();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            assert con != null;
+            ResultSet res = con.createStatement().executeQuery("SELECT matricule FROM vehicule");
+
+            while (res.next()) {
+                vehiculesListeComboBox.add(res.getString("matricule"));
+                //parkingsListeComboBox.add(res.getString("codeParking"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            ResultSet res = con.createStatement().executeQuery("SELECT matricule FROM vehicule WHERE is_reserve=0");
+
+            while (res.next()) {
+                vehiculesAresererListe.add(res.getString("matricule"));
+                //parkingsListeComboBox.add(res.getString("codeParking"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            ResultSet res = con.createStatement().executeQuery("SELECT codeParking FROM parking");
+
+            while (res.next()) {
+                parkingsListeComboBox.add(res.getString("codeParking"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        /*try {
+            ResultSet res = con.createStatement().executeQuery("SELECT cin FROM client");
+
+            while (res.next()) {
+                clientReservant.add(res.getString("cin"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }*/
+
+        try {
+            ResultSet res = con.createStatement().executeQuery("SELECT codeReservation FROM operation WHERE codeContrat=\" \"");
+
+            while (res.next()) {
+                reservationListeCombobox.add(res.getString("codeReservation"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            ResultSet res = con.createStatement().executeQuery("SELECT codeContrat FROM operation WHERE codeFacture=\" \"");
+
+            while (res.next()) {
+                contratListeCombobox.add(res.getString("codeContrat"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            ResultSet res = con.createStatement().executeQuery("SELECT matricule FROM vehicule WHERE is_deposer=1 AND is_Sortis=0");
+
+            while (res.next()) {
+                matriculeComboBoxSortirListe.add(res.getString("matricule"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            ResultSet res = con.createStatement().executeQuery("SELECT matricule FROM vehicule WHERE is_deposer=1 AND is_Sortis=1");
+
+            while (res.next()) {
+                matriculeRestituerComboBox.add(res.getString("matricule"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        vehiculeComboBox.setItems(vehiculesListeComboBox);
+        parkingComboBox.setItems(parkingsListeComboBox);
+        listeVehiculeAreserver.setItems(vehiculesAresererListe);
+        listeClientReserver.setItems(clientReservant);
+        listeReservationCombobox.setItems(reservationListeCombobox);
+        listeContratsCombobox.setItems(contratListeCombobox);
+        matriculeComboBoxSortir.setItems(matriculeComboBoxSortirListe);
+        matriculeRestituer.setItems(matriculeRestituerComboBox);
     }
 
     @FXML
@@ -676,6 +1084,562 @@ public class UtilisateurMenuController implements Initializable {
     public void retourPrincipaleFieldsParkings(ActionEvent actionEvent) {
 
         principaleFieldsAnchor.toFront();
+
+    }
+
+
+    //Les traitements liées au gestion des contrats
+
+
+    public void ajouterContrat(ActionEvent actionEvent) {
+
+        String selectedReservationComboBox = listeReservationCombobox.getSelectionModel().getSelectedItem();
+
+        if (nContartfield.getText().equals("") && dateContratField.getValue() == null && dateEcheanceContratField.getValue() == null) {
+            JOptionPane.showMessageDialog(null, "Veuillez remplir les champs s'il vous plait !!");
+        } else {
+            Contrat nouveauContrat = new Contrat(nContartfield.getText(), dateContratField.getValue().toString(), dateEcheanceContratField.getValue().toString());
+            utilisateur.ajouterContrat(nouveauContrat);
+
+            this.populateContratListe();
+
+            try {
+                conn = DBConnect.getConnection();
+                pat = conn.prepareStatement("UPDATE operation SET codeContrat=? WHERE codeReservation=?");
+
+                pat.setString(1, nouveauContrat.getCodeContrat());
+                pat.setString(2, selectedReservationComboBox);
+
+                rs = pat.execute();
+
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
+
+            nContartfield.setText("");
+            dateContratField.setValue(null);
+            dateEcheanceContratField.setValue(null);
+        }
+
+    }
+
+    private void populateContratListe() {
+
+        listeContrats.getItems().clear();
+
+        Connection con = null;
+        try {
+            con = DBConnect.getConnection();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            assert con != null;
+            ResultSet res = con.createStatement().executeQuery("SELECT * FROM contrat");
+
+            while (res.next()) {
+                contratListe.add(new Contrat(res.getString("codeContrat"), res.getString("dateContrat"), res.getString("dateEcheanceContrat")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        col_nContrat.setCellValueFactory(new PropertyValueFactory<>("codeContrat"));
+        col_dateContrat.setCellValueFactory(new PropertyValueFactory<>("dateContrat"));
+        col_dateEcheance.setCellValueFactory(new PropertyValueFactory<>("dateEcheanceContrat"));
+
+        listeContrats.setItems(contratListe);
+
+    }
+
+    public void modifierContrat(ActionEvent actionEvent) {
+        this.selectionnerContrat();
+    }
+
+    public void supprimerContrat(ActionEvent actionEvent) {
+        this.selectionnerContrat();
+        Contrat contratASupprimer = new Contrat(nContartfield.getText(), dateContratField.getValue().toString(), dateEcheanceContratField.getValue().toString());
+
+        utilisateur.supprimerContrat(contratASupprimer);
+
+        this.populateContratListe();
+
+        nContartfield.setText("");
+        dateContratField.setValue(null);
+        dateEcheanceContratField.setValue(null);
+    }
+
+    public void afficherListeContrats(ActionEvent actionEvent) {
+        listeContrats.toFront();
+        this.populateContratListe();
+
+        this.populateContratListe();
+    }
+
+    public void saveContrat(ActionEvent actionEvent) {
+
+        Contrat nouveauContrat = new Contrat(nContartfield.getText(), dateContratField.getValue().toString(), dateEcheanceContratField.getValue().toString());
+        utilisateur.modifierContrat(nouveauContrat);
+
+    }
+
+    public void chercherContrat(ActionEvent actionEvent) {
+        listeContrats.toFront();
+
+        listeContrats.getItems().clear();
+
+        Connection con = null;
+        try {
+            con = DBConnect.getConnection();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            assert con != null;
+            pat = con.prepareStatement("SELECT * FROM contrat WHERE codeContrat=?");
+
+            pat.setString(1, rechercherContratField.getText());
+            ResultSet res = pat.executeQuery();
+
+            while (res.next()) {
+                contratListe.add(new Contrat(res.getString("codeContrat"), res.getString("dateContrat"), res.getString("dateEcheanceContrat")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        col_nContrat.setCellValueFactory(new PropertyValueFactory<>("codeContrat"));
+        col_dateContrat.setCellValueFactory(new PropertyValueFactory<>("dateContrat"));
+        col_dateEcheance.setCellValueFactory(new PropertyValueFactory<>("dateEcheanceContrat"));
+
+        listeContrats.setItems(contratListe);
+
+    }
+
+    public void selectionnerContrat() {
+
+        Contrat selectedContrat = listeContrats.getSelectionModel().getSelectedItem();
+
+        nContartfield.setText(selectedContrat.getCodeContrat());
+        dateContratField.setValue(LocalDate.parse(selectedContrat.getDateContrat()));
+        dateEcheanceContratField.setValue(LocalDate.parse(selectedContrat.getDateEcheanceContrat()));
+
+    }
+
+
+    //Les traitements liées au gestion des réservations
+
+
+    public void ajouterReservation(ActionEvent actionEvent) {
+
+        String matriculeAreserver = listeVehiculeAreserver.getSelectionModel().getSelectedItem();
+        String clientReservant = listeClientReserver.getSelectionModel().getSelectedItem();
+
+        Reservation nouvelleReservation = new Reservation(codeReservationField.getText(), dateReservationField.getValue().toString(), dateDepartField.getValue().toString(), dateRetourField.getValue().toString());
+        utilisateur.ajouterReservation(nouvelleReservation);
+
+        this.populateReservationListe();
+
+        try {
+            conn = DBConnect.getConnection();
+            pat = conn.prepareStatement("INSERT INTO operation(codeReservation, matricule, codeClient) VALUES(?, ?, ?)");
+
+            pat.setString(1, nouvelleReservation.getCodeReservation());
+            pat.setString(2, matriculeAreserver);
+            pat.setString(3, clientReservant);
+
+            rs = pat.execute();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        nContartfield.setText("");
+        dateReservationField.setValue(null);
+        dateDepartField.setValue(null);
+        dateRetourField.setValue(null);
+
+    }
+
+    private void populateReservationListe() {
+
+        listeReservations.toFront();
+        listeReservations.getItems().clear();
+
+        Connection con = null;
+        try {
+            con = DBConnect.getConnection();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            assert con != null;
+            ResultSet res = con.createStatement().executeQuery("SELECT * FROM reservation");
+
+            while (res.next()) {
+                reservationListe.add(new Reservation(res.getString("codeReservation"), res.getString("dateReservation"), res.getString("dateDepart"), res.getString("dateRetour")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        col_codeReservation.setCellValueFactory(new PropertyValueFactory<>("codeReservation"));
+        col_dateReservation.setCellValueFactory(new PropertyValueFactory<>("dateReservation"));
+        col_dateDepart.setCellValueFactory(new PropertyValueFactory<>("dateDepart"));
+        col_dateRetour.setCellValueFactory(new PropertyValueFactory<>("dateRetour"));
+
+        listeReservations.setItems(reservationListe);
+
+
+    }
+
+    public void modifierReservation(ActionEvent actionEvent) {
+
+        this.selectionnerReservation();
+
+    }
+
+    public void supprimerReservation(ActionEvent actionEvent) {
+
+        this.selectionnerReservation();
+
+        Reservation reservationASupprimer = new Reservation(codeReservationField.getText(), dateReservationField.getValue().toString(), dateDepartField.getValue().toString(), dateRetourField.getValue().toString());
+
+        utilisateur.supprimerReservation(reservationASupprimer);
+
+        this.populateReservationListe();
+
+        nContartfield.setText("");
+        dateReservationField.setValue(null);
+        dateDepartField.setValue(null);
+        dateRetourField.setValue(null);
+
+    }
+
+    public void afficherListeReservation(ActionEvent actionEvent) {
+
+        this.populateReservationListe();
+
+    }
+
+    public void afficherListeReservationValidees(ActionEvent actionEvent) {
+
+        listeReservations.toFront();
+        listeReservations.getItems().clear();
+
+        Connection con = null;
+        try {
+            con = DBConnect.getConnection();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            assert con != null;
+            ResultSet res = con.createStatement().executeQuery("SELECT * FROM reservation WHERE is_valid=1");
+
+            while (res.next()) {
+                reservationListe.add(new Reservation(res.getString("codeReservation"), res.getString("dateReservation"), res.getString("dateDepart"), res.getString("dateRetour")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        col_codeReservation.setCellValueFactory(new PropertyValueFactory<>("codeReservation"));
+        col_dateReservation.setCellValueFactory(new PropertyValueFactory<>("dateReservation"));
+        col_dateDepart.setCellValueFactory(new PropertyValueFactory<>("dateDepart"));
+        col_dateRetour.setCellValueFactory(new PropertyValueFactory<>("dateRetour"));
+
+        listeReservations.setItems(reservationListe);
+
+    }
+
+    public void afficherListeReservationNonValidees(ActionEvent actionEvent) {
+
+        listeReservations.toFront();
+        listeReservations.getItems().clear();
+
+        Connection con = null;
+        try {
+            con = DBConnect.getConnection();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            assert con != null;
+            ResultSet res = con.createStatement().executeQuery("SELECT * FROM reservation WHERE is_valid=0");
+
+            while (res.next()) {
+                reservationListe.add(new Reservation(res.getString("codeReservation"), res.getString("dateReservation"), res.getString("dateDepart"), res.getString("dateRetour")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        col_codeReservation.setCellValueFactory(new PropertyValueFactory<>("codeReservation"));
+        col_dateReservation.setCellValueFactory(new PropertyValueFactory<>("dateReservation"));
+        col_dateDepart.setCellValueFactory(new PropertyValueFactory<>("dateDepart"));
+        col_dateRetour.setCellValueFactory(new PropertyValueFactory<>("dateRetour"));
+
+        listeReservations.setItems(reservationListe);
+
+    }
+
+    public void afficherListeReservationAnnulees(ActionEvent actionEvent) {
+
+        listeReservations.toFront();
+        listeReservations.getItems().clear();
+
+        Connection con = null;
+        try {
+            con = DBConnect.getConnection();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            assert con != null;
+            ResultSet res = con.createStatement().executeQuery("SELECT * FROM reservation WHERE is_annulee=1");
+
+            while (res.next()) {
+                reservationListe.add(new Reservation(res.getString("codeReservation"), res.getString("dateReservation"), res.getString("dateDepart"), res.getString("dateRetour")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        col_codeReservation.setCellValueFactory(new PropertyValueFactory<>("codeReservation"));
+        col_dateReservation.setCellValueFactory(new PropertyValueFactory<>("dateReservation"));
+        col_dateDepart.setCellValueFactory(new PropertyValueFactory<>("dateDepart"));
+        col_dateRetour.setCellValueFactory(new PropertyValueFactory<>("dateRetour"));
+
+        listeReservations.setItems(reservationListe);
+
+    }
+
+    public void saveReservation(ActionEvent actionEvent) {
+        Reservation reservationAModifier = new Reservation(codeReservationField.getText(), dateReservationField.getValue().toString(), dateDepartField.getValue().toString(), dateRetourField.getValue().toString());
+        utilisateur.modifierReservation(reservationAModifier);
+
+        this.populateReservationListe();
+
+        nContartfield.setText("");
+        dateReservationField.setValue(null);
+        dateDepartField.setValue(null);
+        dateRetourField.setValue(null);
+    }
+
+    public void chercherReservation(ActionEvent actionEvent) {
+
+        listeReservations.getItems().clear();
+
+        Connection con = null;
+        try {
+            con = DBConnect.getConnection();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            assert con != null;
+            pat = con.prepareStatement("SELECT * FROM reservation WHERE codeReservation=?");
+
+            pat.setString(1, rechercherReservationField.getText());
+            ResultSet res = pat.executeQuery();
+
+            while (res.next()) {
+                reservationListe.add(new Reservation(res.getString("codeReservation"), res.getString("dateReservation"), res.getString("dateDepart"), res.getString("dateRetour")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        col_codeReservation.setCellValueFactory(new PropertyValueFactory<>("codeReservation"));
+        col_dateReservation.setCellValueFactory(new PropertyValueFactory<>("dateReservation"));
+        col_dateDepart.setCellValueFactory(new PropertyValueFactory<>("dateDepart"));
+        col_dateRetour.setCellValueFactory(new PropertyValueFactory<>("dateRetour"));
+
+        listeReservations.setItems(reservationListe);
+
+    }
+
+    public void selectionnerReservation() {
+        Reservation selectedReservation = listeReservations.getSelectionModel().getSelectedItem();
+
+        codeReservationField.setText(selectedReservation.getCodeReservation());
+        dateReservationField.setValue(LocalDate.parse(selectedReservation.getDateReservation()));
+        dateDepartField.setValue(LocalDate.parse(selectedReservation.getDateDepart()));
+        dateRetourField.setValue(LocalDate.parse(selectedReservation.getDateRetour()));
+    }
+
+    // les traitements liés au gestion des factures
+
+    public void ajouterFacture(ActionEvent actionEvent) {
+
+        String selectedContratComboBox = listeContratsCombobox.getSelectionModel().getSelectedItem();
+
+        Facture nouvelleFacture = new Facture(codeFactureField.getText(), dateFactureField.getValue().toString(), Double.parseDouble(montantPayerField.getText()));
+
+        utilisateur.ajouterFacture(nouvelleFacture);
+
+        this.populateFactureListe();
+
+        try {
+            conn = DBConnect.getConnection();
+            pat = conn.prepareStatement("UPDATE operation SET codeFacture=? WHERE codeContrat=?");
+
+            pat.setString(1, nouvelleFacture.getCodeFacture());
+            pat.setString(2, selectedContratComboBox);
+
+            rs = pat.execute();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void populateFactureListe() {
+
+        listeFactures.getItems().clear();
+
+        Connection con = null;
+        try {
+            con = DBConnect.getConnection();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            assert con != null;
+            ResultSet res = con.createStatement().executeQuery("SELECT * FROM facture");
+
+            while (res.next()) {
+                factureListe.add(new Facture(res.getString("codeFacture"), res.getString("dateFacture"), Double.parseDouble(res.getString("montant"))));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        col_codeFacture.setCellValueFactory(new PropertyValueFactory<>("codeFacture"));
+        col_dateFacture.setCellValueFactory(new PropertyValueFactory<>("dateFacture"));
+        col_montant.setCellValueFactory(new PropertyValueFactory<>("montantPayer"));
+
+        listeFactures.setItems(factureListe);
+
+
+    }
+
+    public void modifierFacture(ActionEvent actionEvent) {
+
+        this.selectionnerFacture();
+
+    }
+
+    public void supprimerFacture(ActionEvent actionEvent) {
+
+        this.selectionnerFacture();
+
+        Facture factureASupprimer = new Facture(codeFactureField.getText(), dateFactureField.getValue().toString(), Double.parseDouble(montantPayerField.getText()));
+
+        utilisateur.supprimerFacture(factureASupprimer);
+
+        this.populateFactureListe();
+
+        codeFactureField.setText("");
+        dateFactureField.setValue(null);
+        montantPayerField.setText("");
+
+    }
+
+    public void afficherListeFacture(ActionEvent actionEvent) {
+
+        this.populateFactureListe();
+
+    }
+
+    public void saveFacture(ActionEvent actionEvent) {
+        Facture factureAModifier = new Facture(codeFactureField.getText(), dateFactureField.getValue().toString(), Double.parseDouble(montantPayerField.getText()));
+        utilisateur.modifierFacture(factureAModifier);
+
+        this.populateFactureListe();
+
+        codeFactureField.setText("");
+        dateFactureField.setValue(null);
+        montantPayerField.setText("");
+    }
+
+    public void chercherFacture(ActionEvent actionEvent) {
+
+        listeFactures.getItems().clear();
+
+        Connection con = null;
+        try {
+            con = DBConnect.getConnection();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            assert con != null;
+            pat = con.prepareStatement("SELECT * FROM facture WHERE codeFacture=?");
+
+            pat.setString(1, rechercherFactureField.getText());
+            ResultSet res = pat.executeQuery();
+
+            while (res.next()) {
+                factureListe.add(new Facture(res.getString("codeFacture"), res.getString("dateFacture"), Double.parseDouble(res.getString("montant"))));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        col_codeFacture.setCellValueFactory(new PropertyValueFactory<>("codeFacture"));
+        col_dateFacture.setCellValueFactory(new PropertyValueFactory<>("dateFacture"));
+        col_montant.setCellValueFactory(new PropertyValueFactory<>("montantPayer"));
+
+        listeFactures.setItems(factureListe);
+
+    }
+
+    public void selectionnerFacture() {
+        Facture selectedFacture = listeFactures.getSelectionModel().getSelectedItem();
+
+        codeFactureField.setText(selectedFacture.getCodeFacture());
+        dateFactureField.setValue(LocalDate.parse(selectedFacture.getDateFacture()));
+        montantPayerField.setText(Double.toString(selectedFacture.getMontantPayer()));
+
+    }
+
+    public void faireSortirOpenAnchor(ActionEvent actionEvent) {
+
+    faireSortirAnchor.toFront();
+
+    }
+
+    public void restituerOpenAnchor(ActionEvent actionEvent){
+
+        restituerAnchor.toFront();
+
+    }
+
+    public void faireSortirVehicule(ActionEvent actionEvent) {
+
+        String matriculeFaireSortir = matriculeComboBoxSortir.getSelectionModel().getSelectedItem();
+
+        utilisateur.faireSortirVehiculeDuParking(matriculeFaireSortir);
+
+    }
+
+    public void restituerVehicule(ActionEvent actionEvent) {
+
+        String matriculeArestituer = matriculeRestituer.getSelectionModel().getSelectedItem();
+
+        utilisateur.restituerVehicule(matriculeArestituer);
 
     }
 }

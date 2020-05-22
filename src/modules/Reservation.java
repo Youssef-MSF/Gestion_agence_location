@@ -3,40 +3,47 @@ package modules;
 public class Reservation {
 
     //informations d'une reservation
-    private String code_reservation;
-    private String date_reservation;
-    private String date_depart;
-    private String date_retour;
+    private String codeReservation;
+    private String dateReservation;
+    private String dateDepart;
+    private String dateRetour;
 
-    public String getCode_reservation() {
-        return code_reservation;
+    public Reservation(String codeReservation, String dateReservation, String dateDepart, String dateRetour) {
+        this.codeReservation = codeReservation;
+        this.dateReservation = dateReservation;
+        this.dateDepart = dateDepart;
+        this.dateRetour = dateRetour;
     }
 
-    public void setCode_reservation(String code_reservation) {
-        this.code_reservation = code_reservation;
+    public String getCodeReservation() {
+        return codeReservation;
     }
 
-    public String getDate_reservation() {
-        return date_reservation;
+    public void setCodeReservation(String codeReservation) {
+        this.codeReservation = codeReservation;
     }
 
-    public void setDate_reservation(String date_reservation) {
-        this.date_reservation = date_reservation;
+    public String getDateReservation() {
+        return dateReservation;
     }
 
-    public String getDate_depart() {
-        return date_depart;
+    public void setDateReservation(String dateReservation) {
+        this.dateReservation = dateReservation;
     }
 
-    public void setDate_depart(String date_depart) {
-        this.date_depart = date_depart;
+    public String getDateDepart() {
+        return dateDepart;
     }
 
-    public String getDate_retour() {
-        return date_retour;
+    public void setDateDepart(String dateDepart) {
+        this.dateDepart = dateDepart;
     }
 
-    public void setDate_retour(String date_retour) {
-        this.date_retour = date_retour;
+    public String getDateRetour() {
+        return dateRetour;
+    }
+
+    public void setDateRetour(String dateRetour) {
+        this.dateRetour = dateRetour;
     }
 }

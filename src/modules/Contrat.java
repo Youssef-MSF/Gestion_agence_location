@@ -3,31 +3,37 @@ package modules;
 public class Contrat {
 
     //informations du contrat
-    private String code_contrat;
-    private String date_contrat;
-    private String date_echeance;
+    private String codeContrat;
+    private String dateContrat;
+    private String dateEcheanceContrat;
 
-    public String getCode_contrat() {
-        return code_contrat;
+    public Contrat(String codeContrat, String dateContrat, String dateEcheance) {
+        this.codeContrat = codeContrat;
+        this.dateContrat = dateContrat;
+        this.dateEcheanceContrat = dateEcheance;
     }
 
-    public void setCode_contrat(String code_contrat) {
-        this.code_contrat = code_contrat;
+    public String getCodeContrat() {
+        return codeContrat;
     }
 
-    public String getDate_contrat() {
-        return date_contrat;
+    public void setCodeContrat(String codeContrat) {
+        this.codeContrat = codeContrat;
     }
 
-    public void setDate_contrat(String date_contrat) {
-        this.date_contrat = date_contrat;
+    public String getDateContrat() {
+        return dateContrat;
     }
 
-    public String getDate_echeance() {
-        return date_echeance;
+    public void setDateContrat(String dateContrat) {
+        this.dateContrat = dateContrat;
     }
 
-    public void setDate_echeance(String date_echeance) {
-        this.date_echeance = date_echeance;
+    public String getDateEcheanceContrat() {
+        return dateEcheanceContrat;
+    }
+
+    public void setDateEcheanceContrat(String dateEcheanceContrat) {
+        this.dateEcheanceContrat = dateEcheanceContrat;
     }
 }

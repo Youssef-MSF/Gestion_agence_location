@@ -20,7 +20,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("fxmls/utilisateurMenu.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Menu d'utilisateur");
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
@@ -30,15 +30,16 @@ public class Main extends Application {
         try {
             con = DBConnect.getConnection();
             pat = con.prepareStatement("CREATE TABLE IF NOT EXISTS vehicule (id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                    "    matricule VARCHAR(100),\n" +
-                    "    marque VARCHAR(100),\n" +
-                    "    type VARCHAR(255),\n" +
-                    "    carburant VARCHAR(255),\n" +
-                    "    compteurKM VARCHAR(10),\n" +
-                    "    dateMiseEnCirculation VARCHAR(100),\n" +
-                    "    nParkingAssocie VARCHAR(100),\n" +
+                    "    matricule VARCHAR(100) DEFAULT \" \",\n" +
+                    "    marque VARCHAR(100) DEFAULT \" \",\n" +
+                    "    type VARCHAR(255) DEFAULT \" \",\n" +
+                    "    carburant VARCHAR(255) DEFAULT \" \",\n" +
+                    "    compteurKM VARCHAR(10) DEFAULT \" \",\n" +
+                    "    dateMiseEnCirculation VARCHAR(100) DEFAULT \" \",\n" +
+                    "    nParkingAssocie VARCHAR(100) DEFAULT \" \",\n" +
                     "    is_Sortis INTEGER DEFAULT 0,\n" +
-                    "    is_deposer INTEGER DEFAULT 0)");
+                    "    is_deposer INTEGER DEFAULT 0,\n" +
+                    "    is_reserve INTEGER DEFAULT 0)");
 
             rs = pat.execute();
 
@@ -50,11 +51,11 @@ public class Main extends Application {
         try {
             con = DBConnect.getConnection();
             pat = con.prepareStatement("CREATE TABLE IF NOT EXISTS utilisateur (id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                    "    nom VARCHAR(100),\n" +
-                    "    prenom VARCHAR(100),\n" +
-                    "    adresse VARCHAR(255),\n" +
-                    "    tel VARCHAR(255),\n" +
-                    "    cin VARCHAR(10),\n" +
+                    "    nom VARCHAR(100) DEFAULT \" \",\n" +
+                    "    prenom VARCHAR(100) DEFAULT \" \",\n" +
+                    "    adresse VARCHAR(255) DEFAULT \" \",\n" +
+                    "    tel VARCHAR(255) DEFAULT \" \",\n" +
+                    "    cin VARCHAR(10) DEFAULT \" \",\n" +
                     "    is_suspend tinyint(1))");
 
             rs = pat.execute();
@@ -66,11 +67,68 @@ public class Main extends Application {
         try {
             con = DBConnect.getConnection();
             pat = con.prepareStatement("CREATE TABLE IF NOT EXISTS parking (id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                    "    codeParking VARCHAR(100),\n" +
-                    "    capacite INTEGER,\n" +
-                    "    rue VARCHAR(255),\n" +
-                    "    arrondissement VARCHAR(255),\n" +
+                    "    codeParking VARCHAR(100) DEFAULT \" \",\n" +
+                    "    capacite INTEGER DEFAULT \" \",\n" +
+                    "    rue VARCHAR(255) DEFAULT \" \",\n" +
+                    "    arrondissement VARCHAR(255) DEFAULT \" \",\n" +
                     "    nbrePlacesVides INTEGER DEFAULT 0)");
+
+            rs = pat.execute();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            con = DBConnect.getConnection();
+            pat = con.prepareStatement("CREATE TABLE IF NOT EXISTS contrat (id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+                    "    codeContrat VARCHAR(100) DEFAULT \" \",\n" +
+                    "    dateContrat VARCHAR(255) DEFAULT \" \",\n" +
+                    "    dateEcheanceContrat VARCHAR(255) DEFAULT \" \")");
+
+            rs = pat.execute();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            con = DBConnect.getConnection();
+            pat = con.prepareStatement("CREATE TABLE IF NOT EXISTS reservation (id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+                    "    codeReservation VARCHAR(100) DEFAULT \" \",\n" +
+                    "    dateReservation VARCHAR(255) DEFAULT \" \",\n" +
+                    "    dateDepart VARCHAR(255) DEFAULT \" \",\n" +
+                    "    dateRetour VARCHAR(255) DEFAULT \" \",\n" +
+                    "    is_annulee INTEGER DEFAULT 0,\n" +
+                    "    is_valid INTEGER DEFAULT 0)");
+
+            rs = pat.execute();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            con = DBConnect.getConnection();
+            pat = con.prepareStatement("CREATE TABLE IF NOT EXISTS facture (id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+                    "    codeFacture VARCHAR(100) DEFAULT \" \",\n" +
+                    "    dateFacture VARCHAR(255) DEFAULT \" \",\n" +
+                    "    montant VARCHAR(255) DEFAULT \" \")");
+
+            rs = pat.execute();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            con = DBConnect.getConnection();
+            pat = con.prepareStatement("CREATE TABLE IF NOT EXISTS operation (id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+                    "    codeReservation VARCHAR(100) DEFAULT \" \",\n" +
+                    "    codeContrat VARCHAR(255) DEFAULT \" \",\n" +
+                    "    matricule VARCHAR(255) DEFAULT \" \",\n" +
+                    "    codeClient VARCHAR(255) DEFAULT \" \",\n" +
+                    "    codeFacture VARCHAR(255) DEFAULT \" \" )");
 
             rs = pat.execute();
 
@@ -80,7 +138,6 @@ public class Main extends Application {
 
 
     }
-
 
     public static void main(String[] args) {
         launch(args);
