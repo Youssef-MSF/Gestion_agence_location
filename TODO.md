@@ -1,17 +1,26 @@
-TODO for 21/05/2020 
+# TODO Liste pour finir ce projet
+- Gestion utilisateur.   DONE
 
 - Gestion vehicule.  DONE
 
-- Gestion parking. finish it *********************** //////Urgent/////
+- Gestion parking.  DONE
 
-- Gestion client.
+- Gestion client.   DONE
 
-- Gestion reservation. ****************
+- Gestion reservation.  DONE
 
-- Gestion contrat. ******
+- Gestion contrat.    DONE
 
-- Gestion facture.
+- Gestion facture.   DONE
+
+- Gestion sanction. DONE
+
+- Interface graphique pour login des utilisateurs.   😏😏😉😉😉
+
+- Page d'acceuil.  😏😏😉😉😉
+
+- n7elle9 3lih chwia. $$$$$$$$$$$$
 
 *** May Allah help me ***
 
-Date limit 30/05/2020 :(
+Date limit 01/06/2020 :(

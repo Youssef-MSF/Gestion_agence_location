@@ -6,14 +6,25 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import utilisateur.Utilisateur;
 
+import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class AdminMenuController implements Initializable {
@@ -89,32 +100,73 @@ public class AdminMenuController implements Initializable {
     @FXML
     private TextField cinField;
 
+    @FXML
+    private Label lineChartTitle;
+
+    @FXML
+    private LineChart<String, Number> lineChartStat;
+
+    @FXML
+    private Button btnStatistiques;
+
+    @FXML
+    private Button btnParametres;
+
+    @FXML
+    private AnchorPane statistiquesAnchor;
+
+    @FXML
+    private AnchorPane parametresAnchor;
+
+    @FXML
+    private TextField usernameUpdateField;
+
+    @FXML
+    private TextField passwordUpdateField;
+
+    @FXML
+    private TextField confirmationField;
+
     Connection conn;
     PreparedStatement pat;
     boolean rs;
 
     ObservableList<Utilisateur> oblist = FXCollections.observableArrayList();
 
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("../fxmls/utilisateurMenu.fxml"));
+        primaryStage.setTitle("adminMenu");
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        PreparedStatement pat;
-        Connection con = null;
-        /*try {
-            con = DBConnect.getConnection();
-            pat = con.prepareStatement("CREATE TABLE IF NOT EXISTS utilisateur (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n" +
-                    "    nom VARCHAR(100),\n" +
-                    "    prenom VARCHAR(100),\n" +
-                    "    adresse VARCHAR(255),\n" +
-                    "    tel VARCHAR(255),\n" +
-                    "    cin VARCHAR(10),\n" +
-                    "    is_suspend tinyint(1))");
+        // Importer les données dans le graph de statistiques
 
-            rs = pat.execute();
+        XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
+
+        try {
+            conn = DBConnect.getConnection();
+            pat = conn.prepareStatement("SELECT * FROM statistiques");
+            ResultSet res = pat.executeQuery();
+
+            while (res.next()) {
+                String mois = res.getString("mois");
+                int nbreVehicule = Integer.parseInt(res.getString("nombre_véhicule"));
+
+                series.getData().add(new XYChart.Data<String, Number>(mois, nbreVehicule));
+            }
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-        }*/
+        }
+
+        lineChartStat.getData().add(series);
+
+        lineChartTitle.setText("Nombre de véhicules aloués par mois de l'année : " + LocalDate.now().getYear());
 
 
         this.populateUtilisateurListe();
@@ -124,12 +176,22 @@ public class AdminMenuController implements Initializable {
     public void handleClicks(ActionEvent actionEvent) {
         if (actionEvent.getSource() == btnUtilisateur) {
             btnUtilisateur.setStyle("-fx-background-color:#9656CD");
-            btnContrat.setStyle("");
+            btnStatistiques.setStyle("");
+            btnParametres.setStyle("");
             gestionTitre.setText("Gestion des utilisateurs");
-        } else if (actionEvent.getSource() == btnContrat) {
-            btnContrat.setStyle("-fx-background-color:#9656CD");
+            gestionUtilisateurs.toFront();
+        } else if (actionEvent.getSource() == btnStatistiques) {
+            btnStatistiques.setStyle("-fx-background-color:#9656CD");
             btnUtilisateur.setStyle("");
-            gestionTitre.setText("Gestion des contrat");
+            btnParametres.setStyle("");
+            gestionTitre.setText("Statistiques");
+            statistiquesAnchor.toFront();
+        } else if (actionEvent.getSource() == btnParametres) {
+            btnParametres.setStyle("-fx-background-color:#9656CD");
+            btnUtilisateur.setStyle("");
+            btnStatistiques.setStyle("");
+            gestionTitre.setText("Paramètres");
+            parametresAnchor.toFront();
         }
     }
 
@@ -137,13 +199,19 @@ public class AdminMenuController implements Initializable {
 
         Utilisateur nouveauUtilisateur = new Utilisateur(nomField.getText(), prenomField.getText(), adresseField.getText(), telField.getText(), cinField.getText(), false);
 
-        admin.ajouterUtilisateur(nouveauUtilisateur);
-        nomField.setText("");
-        prenomField.setText("");
-        adresseField.setText("");
-        telField.setText("");
-        cinField.setText("");
-        this.populateUtilisateurListe();
+        if (admin.ajouterUtilisateur(nouveauUtilisateur)) {
+            JOptionPane.showMessageDialog(null, "Ajout avec succès !!");
+
+            nomField.setText("");
+            prenomField.setText("");
+            adresseField.setText("");
+            telField.setText("");
+            cinField.setText("");
+            this.populateUtilisateurListe();
+
+        } else {
+            JOptionPane.showMessageDialog(null, "L'ajout n'est pas réalisé :(");
+        }
 
     }
 
@@ -156,7 +224,7 @@ public class AdminMenuController implements Initializable {
 
         this.selectionnerUtilisateur();
 
-        Utilisateur utilisateurASupprimer = new Utilisateur(nomField.getText(), prenomField.getText(), adresseField.getText(), cinField.getText(), telField.getText(),false);
+        Utilisateur utilisateurASupprimer = new Utilisateur(nomField.getText(), prenomField.getText(), adresseField.getText(), cinField.getText(), telField.getText(), false);
         utilisateurASupprimer.setId(Integer.parseInt(idField.getText()));
 
         admin.supprimerUtilisateur(utilisateurASupprimer);
@@ -175,7 +243,7 @@ public class AdminMenuController implements Initializable {
 
         this.selectionnerUtilisateur();
 
-        Utilisateur utilisateurASuspendre = new Utilisateur(nomField.getText(), prenomField.getText(), adresseField.getText(), cinField.getText(), telField.getText(),false);
+        Utilisateur utilisateurASuspendre = new Utilisateur(nomField.getText(), prenomField.getText(), adresseField.getText(), cinField.getText(), telField.getText(), false);
         utilisateurASuspendre.setId(Integer.parseInt(idField.getText()));
 
         admin.suspendreUtilisateur(utilisateurASuspendre);
@@ -184,12 +252,17 @@ public class AdminMenuController implements Initializable {
     }
 
 
+    public void retourAcceuil(ActionEvent actionEvent) throws IOException {
 
-    public void retourAcceuil(ActionEvent actionEvent) {
-        System.exit(0);
+        Stage acceuil = new Stage();
+
+        Parent root = FXMLLoader.load(getClass().getResource("../fxmls/acceuil.fxml"));
+        acceuil.initStyle(StageStyle.UNDECORATED);
+        acceuil.setScene(new Scene(root));
+        acceuil.show();
     }
 
-    public void populateUtilisateurListe(){
+    public void populateUtilisateurListe() {
 
         utilisateursListe.getItems().clear();
 
@@ -223,7 +296,7 @@ public class AdminMenuController implements Initializable {
 
     }
 
-    public void selectionnerUtilisateur(){
+    public void selectionnerUtilisateur() {
         Utilisateur selectedUtilisateur = utilisateursListe.getSelectionModel().getSelectedItem();
         idField.setText(Integer.toString(selectedUtilisateur.getId()));
         nomField.setText(selectedUtilisateur.getNom());
@@ -246,4 +319,50 @@ public class AdminMenuController implements Initializable {
 
         this.populateUtilisateurListe();
     }
+
+    public void passerAuxModules(ActionEvent actionEvent) throws Exception {
+        Stage autreModules = new Stage();
+        start(autreModules);
+    }
+
+    public void exit(ActionEvent actionEvent) {
+        ((Node) actionEvent.getSource()).getScene().getWindow().hide();
+    }
+
+
+    @FXML
+    void ModifierAdminInfo(ActionEvent actionEvent) {
+
+        if (usernameUpdateField.getText().equals("") || passwordUpdateField.getText().equals("") || confirmationField.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Veuillez remplir les champs s'il vous plait.");
+        } else if (!(passwordUpdateField.getText().equals(confirmationField.getText()))) {
+            JOptionPane.showMessageDialog(null, "Les deux mot de passe ne sont pas les memes !!");
+        } else {
+
+            try {
+                conn = DBConnect.getConnection();
+                pat = conn.prepareStatement("UPDATE admin SET username=?, password=?");
+
+                pat.setString(1, usernameUpdateField.getText());
+                pat.setString(2, passwordUpdateField.getText());
+
+                rs = pat.execute();
+
+                if (!rs){
+                    JOptionPane.showMessageDialog(null, "Modification avec succès.");
+                }else {
+                    JOptionPane.showMessageDialog(null, "Erreur lors de la modification");
+                }
+
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        usernameUpdateField.setText("");
+        passwordUpdateField.setText("");
+        confirmationField.setText("");
+
+    }
+
 }

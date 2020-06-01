@@ -1,5 +1,6 @@
 package administration.controllers;
 
+import administration.DBConnect;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,23 +30,21 @@ public class AdminLoginController {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../fxmls/adminMenu.fxml"));
         primaryStage.setTitle("adminMenu");
-        //primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
     public void adminLogin(ActionEvent actionEvent) throws Exception {
-        ((Node) actionEvent.getSource()).getScene().getWindow().hide();
         String adminUsername = adminusername.getText();
         String adminPassword = adminpassword.getText();
 
-        if (adminUsername.equals("") && adminPassword.equals("")) {
-            JOptionPane.showMessageDialog(null, "Please fill the form to login !!");
+        if (adminUsername.equals("") || adminPassword.equals("")) {
+            JOptionPane.showMessageDialog(null, "Veuillez remplir les champs s'il vous plait !!");
         } else {
             try {
-                Class.forName("com.mysql.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "");
-                pat = conn.prepareStatement("select * from users where username=? and password=?");
+                conn = DBConnect.getConnection();
+                pat = conn.prepareStatement("SELECT * FROM admin WHERE username=? AND password=?");
 
                 pat.setString(1, adminUsername);
                 pat.setString(2, adminPassword);
@@ -53,8 +52,11 @@ public class AdminLoginController {
                 rs = pat.executeQuery();
 
                 if (rs.next()) {
+                    ((Node) actionEvent.getSource()).getScene().getWindow().hide();
                     Stage adminMenu = new Stage();
                     start(adminMenu);
+
+                    conn.close();
                 } else {
                     JOptionPane.showMessageDialog(null, "Login failed :(");
                     adminusername.setText("");
@@ -68,6 +70,10 @@ public class AdminLoginController {
         }
 
 
+    }
+
+    public void exit(ActionEvent actionEvent){
+        ((Node) actionEvent.getSource()).getScene().getWindow().hide();
     }
 
 }

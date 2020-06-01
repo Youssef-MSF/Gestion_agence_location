@@ -11,7 +11,20 @@ public class Client {
     private String prenom;
     private String adresse;
     private String tel;
-    private Image img_permis;
+    private String imgPermis;
+
+
+    //Constructeur
+
+    public Client(String cin, String nom, String prenom, String adresse, String tel, String imgPermis) {
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.tel = tel;
+        this.imgPermis = imgPermis;
+    }
+
 
     //getters & setters
 
@@ -56,11 +69,11 @@ public class Client {
         this.tel = tel;
     }
 
-    public Image getImg_permis() {
-        return img_permis;
+    public String getImgPermis() {
+        return imgPermis;
     }
 
-    public void setImg_permis(Image img_permis) {
-        this.img_permis = img_permis;
+    public void setImgPermis(String imgPermis) {
+        this.imgPermis = imgPermis;
     }
 }

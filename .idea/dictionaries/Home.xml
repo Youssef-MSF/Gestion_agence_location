@@ -1,6 +1,8 @@
 <component name="ProjectDictionaryState">
   <dictionary name="Home">
     <words>
+      <w>acceuil</w>
+      <w>administrateur</w>
       <w>adresse</w>
       <w>afficher</w>
       <w>ajouter</w>
@@ -10,6 +12,7 @@
       <w>capacite</w>
       <w>carburant</w>
       <w>chercher</w>
+      <w>comme</w>
       <w>compteur</w>
       <w>contrat</w>
       <w>contrats</w>
@@ -17,30 +20,44 @@
       <w>deposer</w>
       <w>echeance</w>
       <w>facture</w>
+      <w>factures</w>
       <w>gestion</w>
+      <w>graphique</w>
       <w>informations</w>
       <w>liste</w>
       <w>liées</w>
       <w>matricule</w>
       <w>mise</w>
+      <w>mois</w>
       <w>montant</w>
+      <w>nombre</w>
       <w>nouveau</w>
+      <w>paramètres</w>
+      <w>permis</w>
       <w>prenom</w>
       <w>prénom</w>
+      <w>rechercher</w>
       <w>remplir</w>
+      <w>restituer</w>
       <w>retour</w>
+      <w>sanctionné</w>
       <w>selectionner</w>
+      <w>sera</w>
       <w>sortis</w>
+      <w>statistiques</w>
       <w>supprimer</w>
       <w>suspendre</w>
       <w>traitements</w>
       <w>utilisateur</w>
+      <w>utilisateurs</w>
       <w>vehicule</w>
       <w>vehicules</w>
       <w>veuillez</w>
       <w>vides</w>
       <w>vous</w>
+      <w>véhicule</w>
       <w>youssef</w>
+      <w>étant</w>
     </words>
   </dictionary>
 </component>

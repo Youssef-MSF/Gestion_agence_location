@@ -2,6 +2,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -141,17 +142,17 @@
                         </Label>
                         <StackPane layoutX="493.0" layoutY="100.0">
                             <children>
-                            <TableView fx:id="listeVehiculeParParking2" prefHeight="440.0" prefWidth="573.0" stylesheets="@../css/style.css" visible="true">
-                                <columns>
-                                    <TableColumn fx:id="col_matricule2" prefWidth="75.0" text="Matricule" />
-                                    <TableColumn fx:id="col_marque2" prefWidth="75.0" text="Marque" />
-                                    <TableColumn fx:id="col_type2" prefWidth="76.0" text="Type" />
-                                    <TableColumn fx:id="col_carburant2" prefWidth="74.0" text="Carburant" />
-                                    <TableColumn fx:id="col_compteur2" prefWidth="90.0" text="Compteur km" />
-                                    <TableColumn fx:id="col_date2" prefWidth="87.0" text="Date de mise en circulation" />
-                                    <TableColumn fx:id="col_nParkingAssocie2" prefWidth="103.0" text="N° de parking associé" />
-                                </columns>
-                            </TableView>
+                                <TableView fx:id="listeVehiculeParParking2" prefHeight="440.0" prefWidth="573.0" stylesheets="@../css/style.css" visible="true">
+                                    <columns>
+                                        <TableColumn fx:id="col_matricule2" prefWidth="75.0" text="Matricule" />
+                                        <TableColumn fx:id="col_marque2" prefWidth="75.0" text="Marque" />
+                                        <TableColumn fx:id="col_type2" prefWidth="76.0" text="Type" />
+                                        <TableColumn fx:id="col_carburant2" prefWidth="74.0" text="Carburant" />
+                                        <TableColumn fx:id="col_compteur2" prefWidth="90.0" text="Compteur km" />
+                                        <TableColumn fx:id="col_date2" prefWidth="87.0" text="Date de mise en circulation" />
+                                        <TableColumn fx:id="col_nParkingAssocie2" prefWidth="103.0" text="N° de parking associé" />
+                                    </columns>
+                                </TableView>
                             </children>
                             <children>
                                 <TableView fx:id="vehiculeListe" prefHeight="461.0" prefWidth="453.0" stylesheets="@../css/style.css" visible="true">
@@ -182,253 +183,176 @@
                         </Button>
                     </children>
                 </AnchorPane>
-            <AnchorPane fx:id="gestionReservations" layoutX="10.0" layoutY="10.0" prefHeight="554.0" prefWidth="945.0" style="-fx-background-color: #B1ADEE;">
-               <children>
-                  <Button fx:id="btnAjouterReservation" layoutX="21.0" layoutY="338.0" mnemonicParsing="false" onAction="#ajouterReservation" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Ajouter" textFill="WHITE" />
-                  <Button fx:id="btnModifierReservation" layoutX="21.0" layoutY="394.0" mnemonicParsing="false" onAction="#modifierReservation" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Modifier" textFill="WHITE" />
-                  <Button fx:id="btnSupprimerReservation" layoutX="238.0" layoutY="338.0" mnemonicParsing="false" onAction="#supprimerReservation" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Supprimer" textFill="WHITE" />
-                  <Button fx:id="btnAfficherListesReservations" layoutX="238.0" layoutY="394.0" mnemonicParsing="false" onAction="#afficherListeReservation" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Liste des réservations" textFill="WHITE" />
-                  <Button fx:id="acceuil111" layoutX="418.0" layoutY="522.0" mnemonicParsing="false" onAction="#retourAcceuil" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: white;" text="Acceuil">
-                     <font>
-                        <Font name="Consolas Bold" size="13.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnSaveModifReseravtion" layoutX="61.0" layoutY="478.0" mnemonicParsing="false" onAction="#saveReservation" prefHeight="37.0" prefWidth="119.0" style="-fx-background-color: #3BAF56;" stylesheets="@../css/style.css" text="Enregistrer" textFill="WHITE" />
-                  <TextField fx:id="rechercherReservationField" layoutX="804.0" layoutY="50.0" prefHeight="37.0" prefWidth="207.0" promptText="Entrer un numéro de réservation" />
-                  <Label layoutX="531.0" layoutY="46.0" prefHeight="47.0" prefWidth="268.0" text="Rechercher une réservation:">
-                     <font>
-                        <Font name="Cambria" size="21.0" />
-                     </font>
-                  </Label>
-                  <StackPane layoutX="493.0" layoutY="100.0">
-                     <children>
-                        <TableView fx:id="listeReservations" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/style.css">
-                           <columns>
-                              <TableColumn fx:id="col_codeReservation" prefWidth="144.0" text="N° de réservation" />
-                              <TableColumn fx:id="col_dateReservation" prefWidth="156.0" text="Date de réservation" />
-                              <TableColumn fx:id="col_dateDepart" prefWidth="131.0" text="Date de départ" />
-                              <TableColumn fx:id="col_dateRetour" prefWidth="216.0" text="Date de retour" />
-                           </columns>
-                        </TableView>
-                        <AnchorPane fx:id="parkingImageContainer11" prefHeight="453.0" prefWidth="453.0">
-                           <children>
-                              <ImageView fx:id="imgParking11" fitHeight="465.0" fitWidth="573.0" visible="true">
-                                 <image>
-                                    <Image url="@../parking.jpg" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </StackPane>
-                  <Button fx:id="btnChercherReservation" layoutX="1000.0" layoutY="50.0" mnemonicParsing="false" onAction="#chercherReservation" prefHeight="37.0" prefWidth="56.0" stylesheets="@../css/style.css">
-                     <graphic>
-                        <FontAwesomeIconView glyphName="SEARCH" size="30" />
-                     </graphic>
-                  </Button>
-                  <StackPane layoutX="1.0" layoutY="1.0">
-                     <children>
-                        <AnchorPane fx:id="principaleFieldsAnchor11" prefHeight="299.0" prefWidth="449.0" style="-fx-background-color: #B1ADEE;">
-                           <children>
-                              <TextField fx:id="codeReservationField" layoutX="13.0" layoutY="47.0" prefHeight="37.0" prefWidth="165.0" promptText="N° de réservation" />
-                              <Label layoutX="15.0" layoutY="10.0" prefHeight="30.0" prefWidth="136.0" text="N° reservation:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="269.0" layoutY="10.0" prefHeight="30.0" prefWidth="182.0" text="date  de reservation:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="15.0" layoutY="104.0" prefHeight="30.0" prefWidth="165.0" text="date depart:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <DatePicker fx:id="dateReservationField" layoutX="260.0" layoutY="47.0" prefHeight="37.0" prefWidth="174.0" promptText="Date de réservation" />
-                              <DatePicker fx:id="dateDepartField" layoutX="13.0" layoutY="142.0" prefHeight="37.0" prefWidth="165.0" promptText="Date de départ" />
-                              <Label layoutX="266.0" layoutY="105.0" prefHeight="30.0" prefWidth="165.0" text="date retour:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <DatePicker fx:id="dateRetourField" layoutX="264.0" layoutY="143.0" prefHeight="37.0" prefWidth="174.0" promptText="Date de retour" />
-                              <ComboBox fx:id="listeVehiculeAreserver" layoutX="212.0" layoutY="195.0" prefHeight="37.0" prefWidth="234.0" promptText="Liste des véhicules pret à réserver" />
-                              <Label layoutX="15.0" layoutY="199.0" prefHeight="30.0" prefWidth="182.0" text="véhicule à reserver:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox fx:id="listeClientReserver" layoutX="212.0" layoutY="254.0" prefHeight="37.0" prefWidth="234.0" promptText="Liste des client qui peuvent réserver" />
-                              <Label layoutX="15.0" layoutY="258.0" prefHeight="30.0" prefWidth="182.0" text="réservation pour:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </StackPane>
-                  <Button layoutX="226.0" layoutY="445.0" mnemonicParsing="false" onAction="#afficherListeReservationValidees" prefHeight="25.0" prefWidth="207.0" style="-fx-background-color: #1E7F7F;" stylesheets="@../css/style.css" text="Liste des réservations validées" textFill="WHITE" />
-                  <Button fx:id="btnAfficherListesReservations2" layoutX="203.0" layoutY="484.0" mnemonicParsing="false" onAction="#afficherListeReservationNonValidees" prefHeight="25.0" prefWidth="207.0" style="-fx-background-color: #1E7F7F;" stylesheets="@../css/style.css" text="Liste des réservations non-validées" textFill="WHITE" />
-                  <Button fx:id="btnAfficherListesReservations3" layoutX="180.0" layoutY="526.0" mnemonicParsing="false" onAction="#afficherListeReservationAnnulees" prefHeight="25.0" prefWidth="207.0" style="-fx-background-color: #1E7F7F;" stylesheets="@../css/style.css" text="Liste des réservations annulées" textFill="WHITE" />
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="gestionContrats" layoutX="10.0" layoutY="10.0" prefHeight="554.0" prefWidth="945.0" style="-fx-background-color: #B1ADEE;">
-               <children>
-                  <Button fx:id="btnAjouterContrat" layoutX="18.0" layoutY="309.0" mnemonicParsing="false" onAction="#ajouterContrat" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Ajouter" textFill="WHITE" />
-                  <Button fx:id="btnModifierContrat" layoutX="18.0" layoutY="365.0" mnemonicParsing="false" onAction="#modifierContrat" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Modifier" textFill="WHITE" />
-                  <Button fx:id="btnSupprimerContrat" layoutX="235.0" layoutY="309.0" mnemonicParsing="false" onAction="#supprimerContrat" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Supprimer" textFill="WHITE" />
-                  <Button fx:id="btnAfficherListesContrats" layoutX="235.0" layoutY="365.0" mnemonicParsing="false" onAction="#afficherListeContrats" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Liste des contrats" textFill="WHITE" />
-                  <Button fx:id="acceuil11" layoutX="394.0" layoutY="522.0" mnemonicParsing="false" onAction="#retourAcceuil" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: white;" text="Acceuil">
-                     <font>
-                        <Font name="Consolas Bold" size="13.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnSaveModifContrat" layoutX="58.0" layoutY="449.0" mnemonicParsing="false" onAction="#saveContrat" prefHeight="37.0" prefWidth="119.0" style="-fx-background-color: #3BAF56;" stylesheets="@../css/style.css" text="Enregistrer" textFill="WHITE" />
-                  <TextField fx:id="rechercherContratField" layoutX="804.0" layoutY="50.0" prefHeight="37.0" prefWidth="207.0" promptText="Entrer un numéro de contrat" />
-                  <Label layoutX="573.0" layoutY="46.0" prefHeight="47.0" prefWidth="226.0" text="Rechercher une contrat:">
-                     <font>
-                        <Font name="Cambria" size="21.0" />
-                     </font>
-                  </Label>
-                  <StackPane layoutX="493.0" layoutY="100.0">
-                     <children>
-                        <AnchorPane fx:id="parkingImageContainer1" prefHeight="453.0" prefWidth="453.0">
-                           <children>
-                              <ImageView fx:id="imgParking1" fitHeight="465.0" fitWidth="573.0" visible="true">
-                                 <image>
-                                    <Image url="@../parking.jpg" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
-                        <TableView fx:id="listeContrats" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/style.css">
-                          <columns>
-                            <TableColumn fx:id="col_nContrat" prefWidth="144.0" text="N° de contrat" />
-                            <TableColumn fx:id="col_dateContrat" prefWidth="226.0" text="Date de contrat" />
-                              <TableColumn fx:id="col_dateEcheance" prefWidth="202.0" text="Date d'echéance" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </StackPane>
-                  <Button fx:id="btnChercherContrat" layoutX="1000.0" layoutY="50.0" mnemonicParsing="false" onAction="#chercherContrat" prefHeight="37.0" prefWidth="56.0" stylesheets="@../css/style.css">
-                     <graphic>
-                        <FontAwesomeIconView glyphName="SEARCH" size="30" />
-                     </graphic>
-                  </Button>
-                  <StackPane layoutX="1.0" layoutY="1.0">
-                     <children>
-                        <AnchorPane fx:id="principaleFieldsAnchor1" prefHeight="299.0" prefWidth="449.0" style="-fx-background-color: #B1ADEE;">
-                           <children>
-                              <TextField fx:id="nContartfield" layoutX="13.0" layoutY="47.0" prefHeight="37.0" prefWidth="165.0" promptText="N° de contrat" />
-                              <Label layoutX="15.0" layoutY="10.0" prefHeight="30.0" prefWidth="129.0" text="N° contrat">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="269.0" layoutY="10.0" prefHeight="30.0" prefWidth="165.0" text="date  de contrat:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="15.0" layoutY="104.0" prefHeight="30.0" prefWidth="165.0" text="date d'echeance">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <DatePicker fx:id="dateContratField" layoutX="260.0" layoutY="47.0" prefHeight="37.0" prefWidth="174.0" promptText="Date de contrat" />
-                              <DatePicker fx:id="dateEcheanceContratField" layoutX="13.0" layoutY="142.0" prefHeight="37.0" prefWidth="165.0" promptText="Date d'écheance du contart" />
-                              <Label layoutX="1.0" layoutY="211.0" prefHeight="37.0" prefWidth="240.0" text="COntrat pour réservation:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox fx:id="listeReservationCombobox" layoutX="235.0" layoutY="211.0" prefHeight="38.0" prefWidth="220.0" promptText="Liste des réservations disponibles" />
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </StackPane>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="gestionFactures" layoutX="10.0" layoutY="10.0" prefHeight="554.0" prefWidth="945.0" style="-fx-background-color: #B1ADEE;">
-               <children>
-                  <Button fx:id="btnAjouterFacture" layoutX="18.0" layoutY="309.0" mnemonicParsing="false" onAction="#ajouterFacture" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Ajouter" textFill="WHITE" />
-                  <Button fx:id="btnModifierFacture" layoutX="18.0" layoutY="365.0" mnemonicParsing="false" onAction="#modifierFacture" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Modifier" textFill="WHITE" />
-                  <Button fx:id="btnSupprimerFacture" layoutX="235.0" layoutY="309.0" mnemonicParsing="false" onAction="#supprimerFacture" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Supprimer" textFill="WHITE" />
-                  <Button fx:id="btnAfficherListesFacture" layoutX="235.0" layoutY="365.0" mnemonicParsing="false" onAction="#afficherListeFacture" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Liste des factures" textFill="WHITE" />
-                  <Button fx:id="acceuil1111" layoutX="394.0" layoutY="522.0" mnemonicParsing="false" onAction="#retourAcceuil" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: white;" text="Acceuil">
-                     <font>
-                        <Font name="Consolas Bold" size="13.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnSaveModifFacture" layoutX="58.0" layoutY="449.0" mnemonicParsing="false" onAction="#saveFacture" prefHeight="37.0" prefWidth="119.0" style="-fx-background-color: #3BAF56;" stylesheets="@../css/style.css" text="Enregistrer" textFill="WHITE" />
-                  <TextField fx:id="rechercherFactureField" layoutX="804.0" layoutY="50.0" prefHeight="37.0" prefWidth="207.0" promptText="Entrer un numéro de facture" />
-                  <Label layoutX="531.0" layoutY="46.0" prefHeight="47.0" prefWidth="268.0" text="Rechercher une réservation:">
-                     <font>
-                        <Font name="Cambria" size="21.0" />
-                     </font>
-                  </Label>
-                  <StackPane layoutX="493.0" layoutY="100.0">
-                     <children>
-                        <AnchorPane fx:id="parkingImageContainer111" prefHeight="453.0" prefWidth="453.0">
-                           <children>
-                              <ImageView fx:id="imgParking111" fitHeight="465.0" fitWidth="573.0" visible="true">
-                                 <image>
-                                    <Image url="@../parking.jpg" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
-                        <TableView fx:id="listeFactures" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/style.css">
-                           <columns>
-                              <TableColumn fx:id="col_codeFacture" prefWidth="205.0" text="N° de facture" />
-                              <TableColumn fx:id="col_dateFacture" prefWidth="181.0" text="Date de facture" />
-                              <TableColumn fx:id="col_montant" prefWidth="185.0" text="Montant à payer" />
-                           </columns>
-                        </TableView>
-                     </children>
-                  </StackPane>
-                  <Button fx:id="btnChercherFacture" layoutX="1000.0" layoutY="50.0" mnemonicParsing="false" onAction="#chercherFacture" prefHeight="37.0" prefWidth="56.0" stylesheets="@../css/style.css">
-                     <graphic>
-                        <FontAwesomeIconView glyphName="SEARCH" size="30" />
-                     </graphic>
-                  </Button>
-                  <StackPane layoutX="1.0" layoutY="1.0">
-                     <children>
-                        <AnchorPane fx:id="principaleFieldsAnchor111" prefHeight="299.0" prefWidth="449.0" style="-fx-background-color: #B1ADEE;">
-                           <children>
-                              <TextField fx:id="codeFactureField" layoutX="13.0" layoutY="47.0" prefHeight="37.0" prefWidth="165.0" promptText="N° de facture" />
-                              <Label layoutX="15.0" layoutY="10.0" prefHeight="30.0" prefWidth="136.0" text="N° facture:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="260.0" layoutY="10.0" prefHeight="30.0" prefWidth="182.0" text="date  de facture:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <DatePicker fx:id="dateFactureField" layoutX="260.0" layoutY="47.0" prefHeight="37.0" prefWidth="174.0" promptText="Date de facture" />
-                              <TextField fx:id="montantPayerField" layoutX="15.0" layoutY="156.0" prefHeight="37.0" prefWidth="165.0" promptText="Montant à payer" />
-                              <Label layoutX="17.0" layoutY="119.0" prefHeight="30.0" prefWidth="165.0" text="montant à payer:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="15.0" layoutY="230.0" prefHeight="30.0" prefWidth="207.0" text="facture pour contrat:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox fx:id="listeContratsCombobox" layoutX="227.0" layoutY="227.0" prefHeight="37.0" prefWidth="207.0" promptText="Liste des contrats disponibles" />
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </StackPane>
-               </children>
-            </AnchorPane>
+                <AnchorPane fx:id="gestionReservations" layoutX="10.0" layoutY="10.0" prefHeight="554.0" prefWidth="945.0" style="-fx-background-color: #B1ADEE;">
+                    <children>
+                        <Button fx:id="btnAjouterReservation" layoutX="21.0" layoutY="338.0" mnemonicParsing="false" onAction="#ajouterReservation" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Ajouter" textFill="WHITE" />
+                        <Button fx:id="btnModifierReservation" layoutX="21.0" layoutY="394.0" mnemonicParsing="false" onAction="#modifierReservation" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Modifier" textFill="WHITE" />
+                        <Button fx:id="btnSupprimerReservation" layoutX="238.0" layoutY="338.0" mnemonicParsing="false" onAction="#supprimerReservation" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Supprimer" textFill="WHITE" />
+                        <Button fx:id="btnAfficherListesReservations" layoutX="238.0" layoutY="394.0" mnemonicParsing="false" onAction="#afficherListeReservation" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Liste des réservations" textFill="WHITE" />
+                        <Button fx:id="acceuil111" layoutX="418.0" layoutY="522.0" mnemonicParsing="false" onAction="#retourAcceuil" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: white;" text="Acceuil">
+                            <font>
+                                <Font name="Consolas Bold" size="13.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="btnSaveModifReseravtion" layoutX="61.0" layoutY="478.0" mnemonicParsing="false" onAction="#saveReservation" prefHeight="37.0" prefWidth="119.0" style="-fx-background-color: #3BAF56;" stylesheets="@../css/style.css" text="Enregistrer" textFill="WHITE" />
+                        <TextField fx:id="rechercherReservationField" layoutX="804.0" layoutY="50.0" prefHeight="37.0" prefWidth="207.0" promptText="Entrer un numéro de réservation" />
+                        <Label layoutX="531.0" layoutY="46.0" prefHeight="47.0" prefWidth="268.0" text="Rechercher une réservation:">
+                            <font>
+                                <Font name="Cambria" size="21.0" />
+                            </font>
+                        </Label>
+                        <StackPane layoutX="493.0" layoutY="100.0">
+                            <children>
+                                <TableView fx:id="listeReservations" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/style.css">
+                                    <columns>
+                                        <TableColumn fx:id="col_codeReservation" prefWidth="144.0" text="N° de réservation" />
+                                        <TableColumn fx:id="col_dateReservation" prefWidth="156.0" text="Date de réservation" />
+                                        <TableColumn fx:id="col_dateDepart" prefWidth="131.0" text="Date de départ" />
+                                        <TableColumn fx:id="col_dateRetour" prefWidth="216.0" text="Date de retour" />
+                                    </columns>
+                                </TableView>
+                                <AnchorPane fx:id="parkingImageContainer11" prefHeight="453.0" prefWidth="453.0">
+                                    <children>
+                                        <ImageView fx:id="imgParking11" fitHeight="465.0" fitWidth="573.0" visible="true">
+                                            <image>
+                                                <Image url="@../parking.jpg" />
+                                            </image>
+                                        </ImageView>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </StackPane>
+                        <Button fx:id="btnChercherReservation" layoutX="1000.0" layoutY="50.0" mnemonicParsing="false" onAction="#chercherReservation" prefHeight="37.0" prefWidth="56.0" stylesheets="@../css/style.css">
+                            <graphic>
+                                <FontAwesomeIconView glyphName="SEARCH" size="30" />
+                            </graphic>
+                        </Button>
+                        <StackPane layoutX="1.0" layoutY="1.0">
+                            <children>
+                                <AnchorPane fx:id="principaleFieldsAnchor11" prefHeight="299.0" prefWidth="449.0" style="-fx-background-color: #B1ADEE;">
+                                    <children>
+                                        <TextField fx:id="codeReservationField" layoutX="13.0" layoutY="47.0" prefHeight="37.0" prefWidth="165.0" promptText="N° de réservation" />
+                                        <Label layoutX="15.0" layoutY="10.0" prefHeight="30.0" prefWidth="136.0" text="N° reservation:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="269.0" layoutY="10.0" prefHeight="30.0" prefWidth="182.0" text="date  de reservation:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="15.0" layoutY="104.0" prefHeight="30.0" prefWidth="165.0" text="date depart:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <DatePicker fx:id="dateReservationField" layoutX="260.0" layoutY="47.0" prefHeight="37.0" prefWidth="174.0" promptText="Date de réservation" />
+                                        <DatePicker fx:id="dateDepartField" layoutX="13.0" layoutY="142.0" prefHeight="37.0" prefWidth="165.0" promptText="Date de départ" />
+                                        <Label layoutX="266.0" layoutY="105.0" prefHeight="30.0" prefWidth="165.0" text="date retour:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <DatePicker fx:id="dateRetourField" layoutX="264.0" layoutY="143.0" prefHeight="37.0" prefWidth="174.0" promptText="Date de retour" />
+                                        <ComboBox fx:id="listeVehiculeAreserver" layoutX="212.0" layoutY="195.0" prefHeight="37.0" prefWidth="234.0" promptText="Liste des véhicules pret à réserver" />
+                                        <Label layoutX="15.0" layoutY="199.0" prefHeight="30.0" prefWidth="182.0" text="véhicule à reserver:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <ComboBox fx:id="listeClientReserver" layoutX="212.0" layoutY="254.0" prefHeight="37.0" prefWidth="234.0" promptText="Liste des client qui peuvent réserver" />
+                                        <Label layoutX="15.0" layoutY="258.0" prefHeight="30.0" prefWidth="182.0" text="réservation pour:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </StackPane>
+                        <Button layoutX="226.0" layoutY="445.0" mnemonicParsing="false" onAction="#afficherListeReservationValidees" prefHeight="25.0" prefWidth="207.0" style="-fx-background-color: #1E7F7F;" stylesheets="@../css/style.css" text="Liste des réservations validées" textFill="WHITE" />
+                        <Button fx:id="btnAfficherListesReservations2" layoutX="203.0" layoutY="484.0" mnemonicParsing="false" onAction="#afficherListeReservationNonValidees" prefHeight="25.0" prefWidth="207.0" style="-fx-background-color: #1E7F7F;" stylesheets="@../css/style.css" text="Liste des réservations non-validées" textFill="WHITE" />
+                        <Button fx:id="btnAfficherListesReservations3" layoutX="180.0" layoutY="526.0" mnemonicParsing="false" onAction="#afficherListeReservationAnnulees" prefHeight="25.0" prefWidth="207.0" style="-fx-background-color: #1E7F7F;" stylesheets="@../css/style.css" text="Liste des réservations annulées" textFill="WHITE" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="gestionContrats" layoutX="10.0" layoutY="10.0" prefHeight="554.0" prefWidth="945.0" style="-fx-background-color: #B1ADEE;">
+                    <children>
+                        <Button fx:id="btnAjouterContrat" layoutX="18.0" layoutY="309.0" mnemonicParsing="false" onAction="#ajouterContrat" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Ajouter" textFill="WHITE" />
+                        <Button fx:id="btnModifierContrat" layoutX="18.0" layoutY="365.0" mnemonicParsing="false" onAction="#modifierContrat" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Modifier" textFill="WHITE" />
+                        <Button fx:id="btnSupprimerContrat" layoutX="235.0" layoutY="309.0" mnemonicParsing="false" onAction="#supprimerContrat" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Supprimer" textFill="WHITE" />
+                        <Button fx:id="btnAfficherListesContrats" layoutX="235.0" layoutY="365.0" mnemonicParsing="false" onAction="#afficherListeContrats" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Liste des contrats" textFill="WHITE" />
+                        <Button fx:id="acceuil11" layoutX="394.0" layoutY="522.0" mnemonicParsing="false" onAction="#retourAcceuil" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: white;" text="Acceuil">
+                            <font>
+                                <Font name="Consolas Bold" size="13.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="btnSaveModifContrat" layoutX="58.0" layoutY="449.0" mnemonicParsing="false" onAction="#saveContrat" prefHeight="37.0" prefWidth="119.0" style="-fx-background-color: #3BAF56;" stylesheets="@../css/style.css" text="Enregistrer" textFill="WHITE" />
+                        <TextField fx:id="rechercherContratField" layoutX="804.0" layoutY="50.0" prefHeight="37.0" prefWidth="207.0" promptText="Entrer un numéro de contrat" />
+                        <Label layoutX="573.0" layoutY="46.0" prefHeight="47.0" prefWidth="226.0" text="Rechercher une contrat:">
+                            <font>
+                                <Font name="Cambria" size="21.0" />
+                            </font>
+                        </Label>
+                        <StackPane layoutX="493.0" layoutY="100.0">
+                            <children>
+                                <AnchorPane fx:id="parkingImageContainer1" prefHeight="453.0" prefWidth="453.0">
+                                    <children>
+                                        <ImageView fx:id="imgParking1" fitHeight="465.0" fitWidth="573.0" visible="true">
+                                            <image>
+                                                <Image url="@../parking.jpg" />
+                                            </image>
+                                        </ImageView>
+                                    </children>
+                                </AnchorPane>
+                                <TableView fx:id="listeContrats" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/style.css">
+                                    <columns>
+                                        <TableColumn fx:id="col_nContrat" prefWidth="144.0" text="N° de contrat" />
+                                        <TableColumn fx:id="col_dateContrat" prefWidth="226.0" text="Date de contrat" />
+                                        <TableColumn fx:id="col_dateEcheance" prefWidth="202.0" text="Date d'echéance" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </StackPane>
+                        <Button fx:id="btnChercherContrat" layoutX="1000.0" layoutY="50.0" mnemonicParsing="false" onAction="#chercherContrat" prefHeight="37.0" prefWidth="56.0" stylesheets="@../css/style.css">
+                            <graphic>
+                                <FontAwesomeIconView glyphName="SEARCH" size="30" />
+                            </graphic>
+                        </Button>
+                        <StackPane layoutX="1.0" layoutY="1.0">
+                            <children>
+                                <AnchorPane fx:id="principaleFieldsAnchor1" prefHeight="299.0" prefWidth="449.0" style="-fx-background-color: #B1ADEE;">
+                                    <children>
+                                        <TextField fx:id="nContartfield" layoutX="13.0" layoutY="47.0" prefHeight="37.0" prefWidth="165.0" promptText="N° de contrat" />
+                                        <Label layoutX="15.0" layoutY="10.0" prefHeight="30.0" prefWidth="129.0" text="N° contrat">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="269.0" layoutY="10.0" prefHeight="30.0" prefWidth="165.0" text="date  de contrat:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="15.0" layoutY="104.0" prefHeight="30.0" prefWidth="165.0" text="date d'echeance">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <DatePicker fx:id="dateContratField" layoutX="260.0" layoutY="47.0" prefHeight="37.0" prefWidth="174.0" promptText="Date de contrat" />
+                                        <DatePicker fx:id="dateEcheanceContratField" layoutX="13.0" layoutY="142.0" prefHeight="37.0" prefWidth="165.0" promptText="Date d'écheance du contart" />
+                                        <Label layoutX="1.0" layoutY="211.0" prefHeight="37.0" prefWidth="240.0" text="COntrat pour réservation:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <ComboBox fx:id="listeReservationCombobox" layoutX="235.0" layoutY="211.0" prefHeight="38.0" prefWidth="220.0" promptText="Liste des réservations disponibles" />
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </StackPane>
+                    </children>
+                </AnchorPane>
                 <AnchorPane fx:id="gestionParkings" prefHeight="554.0" prefWidth="945.0" style="-fx-background-color: #B1ADEE;">
                     <children>
                         <Button fx:id="btnAjouterParking" layoutX="18.0" layoutY="309.0" mnemonicParsing="false" onAction="#ajouterParking" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Ajouter" textFill="WHITE" />
@@ -449,46 +373,46 @@
                         </Label>
                         <StackPane layoutX="493.0" layoutY="100.0">
                             <children>
-                        <TabPane fx:id="listeParkings" prefHeight="426.0" prefWidth="573.0" tabClosingPolicy="UNAVAILABLE">
-                          <tabs>
-                            <Tab text="Liste des parkings">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <TableView fx:id="listeParking" prefHeight="436.0" prefWidth="577.0" stylesheets="@../css/style.css">
-                                            <columns>
-                                                <TableColumn fx:id="col_codeParking" prefWidth="97.0" text="Code parking" />
-                                                <TableColumn fx:id="col_capacite" prefWidth="111.0" text="Capacité" />
-                                                <TableColumn fx:id="col_rue" prefWidth="104.0" text="Rue" />
-                                                <TableColumn fx:id="col_arrondisselent" prefWidth="114.0" text="Arrondissement" />
-                                                <TableColumn fx:id="col_nbrePlacesVides" prefWidth="150.0" text="Nombre de places vides" />
-                                            </columns>
-                                          </TableView>
-                                       </children>
-                                    </AnchorPane>
-                              </content>
-                            </Tab>
-                            <Tab text="Liste des véhicules par parking">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <TableView fx:id="listeVehiculeParParking" prefHeight="440.0" prefWidth="573.0" stylesheets="@../css/style.css">
-                                            <columns>
-                                                <TableColumn fx:id="col_matricule1" prefWidth="75.0" text="Matricule" />
-                                                <TableColumn fx:id="col_marque1" prefWidth="75.0" text="Marque" />
-                                                <TableColumn fx:id="col_type1" prefWidth="76.0" text="Type" />
-                                                <TableColumn fx:id="col_carburant1" prefWidth="74.0" text="Carburant" />
-                                                <TableColumn fx:id="col_compteur1" prefWidth="90.0" text="Compteur km" />
-                                                <TableColumn fx:id="col_date1" prefWidth="87.0" text="Date de mise en circulation" />
-                                                <TableColumn fx:id="col_nParkingAssocie1" prefWidth="103.0" text="N° de parking associé" />
-                                            </columns>
-                                          </TableView>
-                                       </children>
-                                    </AnchorPane>
-                              </content>
-                            </Tab>
-                          </tabs>
-                        </TabPane>
+                                <TabPane fx:id="listeParkings" prefHeight="426.0" prefWidth="573.0" tabClosingPolicy="UNAVAILABLE">
+                                    <tabs>
+                                        <Tab text="Liste des parkings">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <TableView fx:id="listeParking" prefHeight="436.0" prefWidth="577.0" stylesheets="@../css/style.css">
+                                                            <columns>
+                                                                <TableColumn fx:id="col_codeParking" prefWidth="97.0" text="Code parking" />
+                                                                <TableColumn fx:id="col_capacite" prefWidth="111.0" text="Capacité" />
+                                                                <TableColumn fx:id="col_rue" prefWidth="104.0" text="Rue" />
+                                                                <TableColumn fx:id="col_arrondisselent" prefWidth="114.0" text="Arrondissement" />
+                                                                <TableColumn fx:id="col_nbrePlacesVides" prefWidth="150.0" text="Nombre de places vides" />
+                                                            </columns>
+                                                        </TableView>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Liste des véhicules par parking">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <TableView fx:id="listeVehiculeParParking" prefHeight="440.0" prefWidth="573.0" stylesheets="@../css/style.css">
+                                                            <columns>
+                                                                <TableColumn fx:id="col_matricule1" prefWidth="75.0" text="Matricule" />
+                                                                <TableColumn fx:id="col_marque1" prefWidth="75.0" text="Marque" />
+                                                                <TableColumn fx:id="col_type1" prefWidth="76.0" text="Type" />
+                                                                <TableColumn fx:id="col_carburant1" prefWidth="74.0" text="Carburant" />
+                                                                <TableColumn fx:id="col_compteur1" prefWidth="90.0" text="Compteur km" />
+                                                                <TableColumn fx:id="col_date1" prefWidth="87.0" text="Date de mise en circulation" />
+                                                                <TableColumn fx:id="col_nParkingAssocie1" prefWidth="103.0" text="N° de parking associé" />
+                                                            </columns>
+                                                        </TableView>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                    </tabs>
+                                </TabPane>
                                 <AnchorPane fx:id="parkingImageContainer" prefHeight="453.0" prefWidth="453.0">
                                     <children>
                                         <ImageView fx:id="imgParking" fitHeight="465.0" fitWidth="573.0" visible="true">
@@ -505,95 +429,348 @@
                                 <FontAwesomeIconView glyphName="SEARCH" size="30" />
                             </graphic>
                         </Button>
-                  <Button fx:id="btnDeposerRestituer" layoutX="216.0" layoutY="411.0" mnemonicParsing="false" onAction="#deposerRestituerAnchor" prefHeight="47.0" prefWidth="220.0" style="-fx-background-color: #63AED9;" stylesheets="@../css/style.css" text="Déposer véhicule" textFill="WHITE" />
-                  <StackPane layoutX="1.0" layoutY="1.0">
-                     <children>
-                        <AnchorPane fx:id="faireSortirAnchor" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #B1ADEE;">
-                           <children>
-                              <Button layoutX="360.0" layoutY="194.0" mnemonicParsing="false" onAction="#faireSortirVehicule" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Faire sortir " textFill="WHITE" />
-                              <Label layoutX="2.0" layoutY="22.0" prefHeight="57.0" prefWidth="486.0" text="Veuillez sélectionner un véhicule pour le faire sortir. ">
-                                 <font>
-                                    <Font name="Arial Narrow Bold Italic" size="23.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox fx:id="matriculeComboBoxSortir" layoutX="79.0" layoutY="83.0" prefHeight="38.0" prefWidth="207.0" promptText="Sélectionner un matricule" />
-                              <Button fx:id="btnRetourPrincipaleFields1" layoutX="14.0" layoutY="193.0" mnemonicParsing="false" onAction="#retourPrincipaleFieldsParkings" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: #BE8092;" stylesheets="@../css/style.css" text="Retour" textFill="WHITE" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="deposerRestituerAnchor" prefHeight="299.0" prefWidth="449.0" style="-fx-background-color: #B1ADEE;">
-                           <children>
-                              <Label layoutX="35.0" layoutY="41.0" prefHeight="30.0" prefWidth="182.0" text="Vehicule a deposer:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="270.0" layoutY="40.0" prefHeight="30.0" prefWidth="158.0" text="code Parkng:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Button fx:id="btnDeposer" layoutX="367.0" layoutY="186.0" mnemonicParsing="false" onAction="#deposerVehicule" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: #1E7F7F;" stylesheets="@../css/style.css" text="Déposer" textFill="WHITE" />
-                              <ComboBox fx:id="vehiculeComboBox" layoutX="35.0" layoutY="86.0" prefHeight="38.0" prefWidth="165.0" promptText="Liste des matricules" visibleRowCount="6" />
-                              <ComboBox fx:id="parkingComboBox" layoutX="270.0" layoutY="86.0" prefHeight="38.0" prefWidth="165.0" promptText="Liste des parkings" visibleRowCount="6" />
-                              <AnchorPane layoutY="266.0" prefHeight="5.0" prefWidth="484.0" style="-fx-background-color: #8B85E6;" />
-                              <Button fx:id="btnRetourPrincipaleFields" layoutX="14.0" layoutY="186.0" mnemonicParsing="false" onAction="#retourPrincipaleFieldsParkings" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: #BE8092;" stylesheets="@../css/style.css" text="Retour" textFill="WHITE" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="restituerAnchor" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #B1ADEE;">
-                           <children>
-                              <Label layoutX="18.0" layoutY="22.0" prefHeight="47.0" prefWidth="423.0" text="Veuillez sélectionner le véhicule à réstituer">
-                                 <font>
-                                    <Font name="Arial Narrow Bold Italic" size="23.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox fx:id="matriculeRestituer" layoutX="79.0" layoutY="83.0" prefHeight="38.0" prefWidth="207.0" promptText="Sélectionner un matricule" />
-                              <Button fx:id="btnRetourPrincipaleFields11" layoutX="14.0" layoutY="193.0" mnemonicParsing="false" onAction="#retourPrincipaleFieldsParkings" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: #BE8092;" stylesheets="@../css/style.css" text="Retour" textFill="WHITE" />
-                              <Button layoutX="360.0" layoutY="193.0" mnemonicParsing="false" onAction="#restituerVehicule" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Réstituer" textFill="WHITE" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="principaleFieldsAnchor" prefHeight="299.0" prefWidth="449.0" style="-fx-background-color: #B1ADEE;">
-                           <children>
-                              <TextField fx:id="codeParkingField" layoutX="13.0" layoutY="47.0" prefHeight="37.0" prefWidth="165.0" promptText="Code parking" />
-                              <Label layoutX="15.0" layoutY="10.0" prefHeight="30.0" prefWidth="129.0" text="code parking:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="arrondissementField" layoutX="270.0" layoutY="145.0" prefHeight="37.0" prefWidth="165.0" promptText="Arrondissement" />
-                              <Label layoutX="270.0" layoutY="106.0" prefHeight="30.0" prefWidth="148.0" text="arrondissement:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="rueField" layoutX="270.0" layoutY="48.0" prefHeight="37.0" prefWidth="165.0" promptText="Rue" />
-                              <Label layoutX="269.0" layoutY="10.0" prefHeight="30.0" prefWidth="95.0" text="rue:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="capaciteField" layoutX="13.0" layoutY="144.0" prefHeight="37.0" prefWidth="165.0" promptText="Capacité" />
-                              <Label layoutX="15.0" layoutY="104.0" prefHeight="30.0" prefWidth="119.0" text="capacité:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="nbrePlacesVidesField" layoutX="13.0" layoutY="242.0" prefHeight="37.0" prefWidth="165.0" promptText="Nombre de places vides" />
-                              <Label layoutX="13.0" layoutY="205.0" prefHeight="30.0" prefWidth="234.0" text="nombre de places vides:">
-                                 <font>
-                                    <Font name="Algerian" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </StackPane>
-                  <Button fx:id="btnDeposerRestituer1" layoutX="216.0" layoutY="468.0" mnemonicParsing="false" onAction="#faireSortirOpenAnchor" prefHeight="47.0" prefWidth="136.0" style="-fx-background-color: #63AED9;" stylesheets="@../css/style.css" text="Faire sortir un véhicule" textFill="WHITE" />
-                  <Button fx:id="btnDeposerRestituer11" layoutX="358.0" layoutY="468.0" mnemonicParsing="false" onAction="#restituerOpenAnchor" prefHeight="47.0" prefWidth="81.0" style="-fx-background-color: #63AED9;" stylesheets="@../css/style.css" text="Réstituer" textFill="WHITE" />
+                        <Button fx:id="btnDeposerRestituer" layoutX="216.0" layoutY="411.0" mnemonicParsing="false" onAction="#deposerRestituerAnchor" prefHeight="47.0" prefWidth="220.0" style="-fx-background-color: #63AED9;" stylesheets="@../css/style.css" text="Déposer véhicule" textFill="WHITE" />
+                        <StackPane layoutX="1.0" layoutY="1.0">
+                            <children>
+                                <AnchorPane fx:id="faireSortirAnchor" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #B1ADEE;">
+                                    <children>
+                                        <Button layoutX="360.0" layoutY="194.0" mnemonicParsing="false" onAction="#faireSortirVehicule" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Faire sortir " textFill="WHITE" />
+                                        <Label layoutX="2.0" layoutY="22.0" prefHeight="57.0" prefWidth="486.0" text="Veuillez sélectionner un véhicule pour le faire sortir. ">
+                                            <font>
+                                                <Font name="Arial Narrow Bold Italic" size="23.0" />
+                                            </font>
+                                        </Label>
+                                        <ComboBox fx:id="matriculeComboBoxSortir" layoutX="79.0" layoutY="83.0" prefHeight="38.0" prefWidth="207.0" promptText="Sélectionner un matricule" />
+                                        <Button fx:id="btnRetourPrincipaleFields1" layoutX="14.0" layoutY="193.0" mnemonicParsing="false" onAction="#retourPrincipaleFieldsParkings" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: #BE8092;" stylesheets="@../css/style.css" text="Retour" textFill="WHITE" />
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane fx:id="deposerRestituerAnchor" prefHeight="299.0" prefWidth="449.0" style="-fx-background-color: #B1ADEE;">
+                                    <children>
+                                        <Label layoutX="35.0" layoutY="41.0" prefHeight="30.0" prefWidth="182.0" text="Vehicule a deposer:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="270.0" layoutY="40.0" prefHeight="30.0" prefWidth="158.0" text="code Parkng:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <Button fx:id="btnDeposer" layoutX="367.0" layoutY="186.0" mnemonicParsing="false" onAction="#deposerVehicule" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: #1E7F7F;" stylesheets="@../css/style.css" text="Déposer" textFill="WHITE" />
+                                        <ComboBox fx:id="vehiculeComboBox" layoutX="35.0" layoutY="86.0" prefHeight="38.0" prefWidth="165.0" promptText="Liste des matricules" visibleRowCount="6" />
+                                        <ComboBox fx:id="parkingComboBox" layoutX="270.0" layoutY="86.0" prefHeight="38.0" prefWidth="165.0" promptText="Liste des parkings" visibleRowCount="6" />
+                                        <AnchorPane layoutY="266.0" prefHeight="5.0" prefWidth="484.0" style="-fx-background-color: #8B85E6;" />
+                                        <Button fx:id="btnRetourPrincipaleFields" layoutX="14.0" layoutY="186.0" mnemonicParsing="false" onAction="#retourPrincipaleFieldsParkings" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: #BE8092;" stylesheets="@../css/style.css" text="Retour" textFill="WHITE" />
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane fx:id="restituerAnchor" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #B1ADEE;">
+                                    <children>
+                                        <Label layoutX="18.0" layoutY="22.0" prefHeight="47.0" prefWidth="423.0" text="Veuillez sélectionner le véhicule à réstituer">
+                                            <font>
+                                                <Font name="Arial Narrow Bold Italic" size="23.0" />
+                                            </font>
+                                        </Label>
+                                        <ComboBox fx:id="matriculeRestituer" layoutX="79.0" layoutY="83.0" prefHeight="38.0" prefWidth="207.0" promptText="Sélectionner un matricule" />
+                                        <Button fx:id="btnRetourPrincipaleFields11" layoutX="14.0" layoutY="193.0" mnemonicParsing="false" onAction="#retourPrincipaleFieldsParkings" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: #BE8092;" stylesheets="@../css/style.css" text="Retour" textFill="WHITE" />
+                                        <Button layoutX="360.0" layoutY="193.0" mnemonicParsing="false" onAction="#restituerVehicule" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Réstituer" textFill="WHITE" />
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane fx:id="principaleFieldsAnchor" prefHeight="299.0" prefWidth="449.0" style="-fx-background-color: #B1ADEE;">
+                                    <children>
+                                        <TextField fx:id="codeParkingField" layoutX="13.0" layoutY="47.0" prefHeight="37.0" prefWidth="165.0" promptText="Code parking" />
+                                        <Label layoutX="15.0" layoutY="10.0" prefHeight="30.0" prefWidth="129.0" text="code parking:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="arrondissementField" layoutX="270.0" layoutY="145.0" prefHeight="37.0" prefWidth="165.0" promptText="Arrondissement" />
+                                        <Label layoutX="270.0" layoutY="106.0" prefHeight="30.0" prefWidth="148.0" text="arrondissement:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="rueField" layoutX="270.0" layoutY="48.0" prefHeight="37.0" prefWidth="165.0" promptText="Rue" />
+                                        <Label layoutX="269.0" layoutY="10.0" prefHeight="30.0" prefWidth="95.0" text="rue:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="capaciteField" layoutX="13.0" layoutY="144.0" prefHeight="37.0" prefWidth="165.0" promptText="Capacité" />
+                                        <Label layoutX="15.0" layoutY="104.0" prefHeight="30.0" prefWidth="119.0" text="capacité:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="nbrePlacesVidesField" layoutX="13.0" layoutY="242.0" prefHeight="37.0" prefWidth="165.0" promptText="Nombre de places vides" />
+                                        <Label layoutX="13.0" layoutY="205.0" prefHeight="30.0" prefWidth="234.0" text="nombre de places vides:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </StackPane>
+                        <Button fx:id="btnDeposerRestituer1" layoutX="216.0" layoutY="468.0" mnemonicParsing="false" onAction="#faireSortirOpenAnchor" prefHeight="47.0" prefWidth="136.0" style="-fx-background-color: #63AED9;" stylesheets="@../css/style.css" text="Faire sortir un véhicule" textFill="WHITE" />
+                        <Button fx:id="btnDeposerRestituer11" layoutX="358.0" layoutY="468.0" mnemonicParsing="false" onAction="#restituerOpenAnchor" prefHeight="47.0" prefWidth="81.0" style="-fx-background-color: #63AED9;" stylesheets="@../css/style.css" text="Réstituer" textFill="WHITE" />
                     </children>
                 </AnchorPane>
+                <AnchorPane fx:id="gestionFactures" layoutX="10.0" layoutY="10.0" prefHeight="554.0" prefWidth="945.0" style="-fx-background-color: #B1ADEE;">
+                    <children>
+                        <Button fx:id="btnAjouterFacture" layoutX="18.0" layoutY="309.0" mnemonicParsing="false" onAction="#ajouterFacture" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Ajouter" textFill="WHITE" />
+                        <Button fx:id="btnModifierFacture" layoutX="18.0" layoutY="365.0" mnemonicParsing="false" onAction="#modifierFacture" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Modifier" textFill="WHITE" />
+                        <Button fx:id="btnSupprimerFacture" layoutX="235.0" layoutY="309.0" mnemonicParsing="false" onAction="#supprimerFacture" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Supprimer" textFill="WHITE" />
+                        <Button fx:id="btnAfficherListesFacture" layoutX="235.0" layoutY="365.0" mnemonicParsing="false" onAction="#afficherListeFacture" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Liste des factures" textFill="WHITE" />
+                        <Button fx:id="acceuil1111" layoutX="394.0" layoutY="522.0" mnemonicParsing="false" onAction="#retourAcceuil" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: white;" text="Acceuil">
+                            <font>
+                                <Font name="Consolas Bold" size="13.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="btnSaveModifFacture" layoutX="58.0" layoutY="449.0" mnemonicParsing="false" onAction="#saveFacture" prefHeight="37.0" prefWidth="119.0" style="-fx-background-color: #3BAF56;" stylesheets="@../css/style.css" text="Enregistrer" textFill="WHITE" />
+                        <TextField fx:id="rechercherFactureField" layoutX="804.0" layoutY="50.0" prefHeight="37.0" prefWidth="207.0" promptText="Entrer un numéro de facture" />
+                        <Label layoutX="531.0" layoutY="46.0" prefHeight="47.0" prefWidth="268.0" text="Rechercher une réservation:">
+                            <font>
+                                <Font name="Cambria" size="21.0" />
+                            </font>
+                        </Label>
+                        <StackPane layoutX="493.0" layoutY="100.0">
+                            <children>
+                                <AnchorPane fx:id="parkingImageContainer111" prefHeight="453.0" prefWidth="453.0">
+                                    <children>
+                                        <ImageView fx:id="imgParking111" fitHeight="465.0" fitWidth="573.0" visible="true">
+                                            <image>
+                                                <Image url="@../parking.jpg" />
+                                            </image>
+                                        </ImageView>
+                                    </children>
+                                </AnchorPane>
+                                <TableView fx:id="listeFactures" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/style.css">
+                                    <columns>
+                                        <TableColumn fx:id="col_codeFacture" prefWidth="205.0" text="N° de facture" />
+                                        <TableColumn fx:id="col_dateFacture" prefWidth="181.0" text="Date de facture" />
+                                        <TableColumn fx:id="col_montant" prefWidth="185.0" text="Montant à payer" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </StackPane>
+                        <Button fx:id="btnChercherFacture" layoutX="1000.0" layoutY="50.0" mnemonicParsing="false" onAction="#chercherFacture" prefHeight="37.0" prefWidth="56.0" stylesheets="@../css/style.css">
+                            <graphic>
+                                <FontAwesomeIconView glyphName="SEARCH" size="30" />
+                            </graphic>
+                        </Button>
+                        <StackPane layoutX="1.0" layoutY="1.0">
+                            <children>
+                                <AnchorPane fx:id="principaleFieldsAnchor111" prefHeight="299.0" prefWidth="449.0" style="-fx-background-color: #B1ADEE;">
+                                    <children>
+                                        <TextField fx:id="codeFactureField" layoutX="13.0" layoutY="47.0" prefHeight="37.0" prefWidth="165.0" promptText="N° de facture" />
+                                        <Label layoutX="15.0" layoutY="10.0" prefHeight="30.0" prefWidth="136.0" text="N° facture:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="260.0" layoutY="10.0" prefHeight="30.0" prefWidth="182.0" text="date  de facture:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <DatePicker fx:id="dateFactureField" layoutX="260.0" layoutY="47.0" prefHeight="37.0" prefWidth="174.0" promptText="Date de facture" />
+                                        <TextField fx:id="montantPayerField" layoutX="15.0" layoutY="156.0" prefHeight="37.0" prefWidth="165.0" promptText="Montant à payer" />
+                                        <Label layoutX="17.0" layoutY="119.0" prefHeight="30.0" prefWidth="165.0" text="montant à payer:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="15.0" layoutY="230.0" prefHeight="30.0" prefWidth="207.0" text="facture pour contrat:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <ComboBox fx:id="listeContratsCombobox" layoutX="227.0" layoutY="227.0" prefHeight="37.0" prefWidth="207.0" promptText="Liste des contrats disponibles" />
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </StackPane>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="gestionClients" layoutX="10.0" layoutY="10.0" prefHeight="554.0" prefWidth="945.0" style="-fx-background-color: #B1ADEE;">
+                    <children>
+                        <Button fx:id="btnAjouterFacture1" layoutX="14.0" layoutY="374.0" mnemonicParsing="false" onAction="#ajouterClient" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Ajouter" textFill="WHITE" />
+                        <Button fx:id="btnModifierFacture1" layoutX="14.0" layoutY="430.0" mnemonicParsing="false" onAction="#modifierClient" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Modifier" textFill="WHITE" />
+                        <Button fx:id="btnSupprimerFacture1" layoutX="231.0" layoutY="374.0" mnemonicParsing="false" onAction="#supprimerClient" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Supprimer" textFill="WHITE" />
+                        <Button fx:id="btnAfficherListesFacture1" layoutX="231.0" layoutY="430.0" mnemonicParsing="false" onAction="#afficherListeCLient" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Liste des clients" textFill="WHITE" />
+                        <Button fx:id="acceuil11111" layoutX="394.0" layoutY="522.0" mnemonicParsing="false" onAction="#retourAcceuil" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: white;" text="Acceuil">
+                            <font>
+                                <Font name="Consolas Bold" size="13.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="btnSaveModifFacture1" layoutX="54.0" layoutY="514.0" mnemonicParsing="false" onAction="#saveClient" prefHeight="37.0" prefWidth="119.0" style="-fx-background-color: #3BAF56;" stylesheets="@../css/style.css" text="Enregistrer" textFill="WHITE" />
+                        <TextField fx:id="rechercherClientField" layoutX="804.0" layoutY="50.0" prefHeight="37.0" prefWidth="207.0" promptText="Entrer un cin d'un client à chercher" />
+                        <Label layoutX="531.0" layoutY="46.0" prefHeight="47.0" prefWidth="268.0" text="Rechercher une un client:">
+                            <font>
+                                <Font name="Cambria" size="21.0" />
+                            </font>
+                        </Label>
+                        <StackPane layoutX="493.0" layoutY="100.0">
+                            <children>
+                                <AnchorPane fx:id="parkingImageContainer1111" prefHeight="453.0" prefWidth="453.0">
+                                    <children>
+                                        <ImageView fx:id="imgParking1111" fitHeight="465.0" fitWidth="573.0" visible="true">
+                                            <image>
+                                                <Image url="@../parking.jpg" />
+                                            </image>
+                                        </ImageView>
+                                    </children>
+                                </AnchorPane>
+                                <TableView fx:id="listeClients" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/style.css">
+                                    <columns>
+                                        <TableColumn fx:id="col_cin" prefWidth="81.0" text="CIN" />
+                                        <TableColumn fx:id="col_nom" prefWidth="110.0" text="Nom" />
+                                        <TableColumn fx:id="col_prenom" prefWidth="110.0" text="Prénom" />
+                                        <TableColumn fx:id="col_tel" prefWidth="112.0" text="Téléphone" />
+                                        <TableColumn fx:id="col_adresse" prefWidth="159.0" text="Adresse" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </StackPane>
+                        <Button fx:id="btnChercherClient" layoutX="1000.0" layoutY="50.0" mnemonicParsing="false" onAction="#chercherClient" prefHeight="37.0" prefWidth="56.0" stylesheets="@../css/style.css">
+                            <graphic>
+                                <FontAwesomeIconView glyphName="SEARCH" size="30" />
+                            </graphic>
+                        </Button>
+                        <StackPane layoutX="1.0" layoutY="1.0">
+                            <children>
+                                <AnchorPane fx:id="principaleFieldsAnchor1111" prefHeight="299.0" prefWidth="449.0" style="-fx-background-color: #B1ADEE;">
+                                    <children>
+                                        <TextField fx:id="codeClientField" layoutX="13.0" layoutY="47.0" prefHeight="37.0" prefWidth="165.0" promptText="CIN" />
+                                        <Label layoutX="15.0" layoutY="10.0" prefHeight="30.0" prefWidth="136.0" text="cin:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="nomClientField" layoutX="246.0" layoutY="47.0" prefHeight="37.0" prefWidth="165.0" promptText="Nom" />
+                                        <Label layoutX="248.0" layoutY="10.0" prefHeight="30.0" prefWidth="165.0" text="nom:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="prenomClientField" layoutX="12.0" layoutY="137.0" prefHeight="37.0" prefWidth="165.0" promptText="Prénom" />
+                                        <Label layoutX="14.0" layoutY="100.0" prefHeight="30.0" prefWidth="165.0" text="prénom:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="adresseClientField" layoutX="245.0" layoutY="137.0" prefHeight="37.0" prefWidth="165.0" promptText="Adresse" />
+                                        <Label layoutX="247.0" layoutY="100.0" prefHeight="30.0" prefWidth="165.0" text="adresse:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="telClientField" layoutX="13.0" layoutY="237.0" prefHeight="37.0" prefWidth="165.0" promptText="Téléphone" />
+                                        <Label layoutX="15.0" layoutY="200.0" prefHeight="30.0" prefWidth="165.0" text="tél:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="246.0" layoutY="200.0" prefHeight="30.0" prefWidth="165.0" text="image de permis:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <Button fx:id="btnAjouterFacture11" layoutX="249.0" layoutY="237.0" mnemonicParsing="false" onAction="#choisirImagePermis" prefHeight="37.0" prefWidth="158.0" style="-fx-background-color: #252525;" stylesheets="@../css/style.css" text="Choisir" textFill="WHITE" />
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </StackPane>
+                        <Label fx:id="imgPermisName" layoutX="193.0" layoutY="292.0" prefHeight="30.0" prefWidth="274.0" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="gestionSanctions" layoutX="10.0" layoutY="10.0" prefHeight="554.0" prefWidth="945.0" style="-fx-background-color: #B1ADEE;">
+                    <children>
+                        <Button fx:id="btnafficherListeClientSanctionnes" layoutX="45.0" layoutY="197.0" mnemonicParsing="false" onAction="#afficherListeClientSanctionnes" prefHeight="57.0" prefWidth="207.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Afficher liste des clients sanctionné" textFill="WHITE" />
+                        <Label fx:id="listeClientSanctionneLabel" layoutX="299.0" layoutY="31.0" prefHeight="47.0" prefWidth="638.0" text="Liste des clients sanctionnés:">
+                            <font>
+                                <Font name="System Bold Italic" size="26.0" />
+                            </font>
+                        </Label>
+                        <TableView fx:id="listeClientSanctionne" layoutX="300.0" layoutY="113.0" prefHeight="440.0" prefWidth="709.0" stylesheets="@../css/style.css">
+                            <columns>
+                                <TableColumn fx:id="col_codeClientSanctionne" prefWidth="116.0" text="CIN CLient" />
+                                <TableColumn fx:id="col_codeReservationSanctionne" prefWidth="218.0" text="N° de réservation correspondant" />
+                                <TableColumn fx:id="col_codeCOntratSanctionne" minWidth="0.0" prefWidth="118.0" text="N° de contrat" />
+                                <TableColumn fx:id="col_matriculeSanctionne" minWidth="0.0" prefWidth="115.0" text="Véhicule aloué" />
+                                <TableColumn fx:id="col_montantSanction" minWidth="8.0" prefWidth="141.0" text="Montant des sanctions" />
+                            </columns>
+                        </TableView>
+                        <AnchorPane fx:id="reglerSanctionAnchor" layoutX="14.0" layoutY="321.0" prefHeight="96.0" prefWidth="268.0">
+                            <children>
+                                <CheckBox fx:id="reglerSanctionCheck" layoutX="8.0" layoutY="21.0" mnemonicParsing="false" onAction="#reglerSanction" text="Marquer comme réglée">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </CheckBox>
+                            </children>
+                        </AnchorPane>
+                  <Button fx:id="acceuil2" layoutX="202.0" layoutY="514.0" mnemonicParsing="false" onAction="#retourAcceuil" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: white;" text="Acceuil">
+                     <font>
+                        <Font name="Consolas Bold" size="13.0" />
+                     </font>
+                  </Button>
+                    </children>
+                </AnchorPane>
+            <AnchorPane fx:id="gestionSanctions1" layoutX="10.0" layoutY="10.0" prefHeight="554.0" prefWidth="945.0" style="-fx-background-color: #B1ADEE;">
+               <children>
+                  <Button fx:id="acceuil21" layoutX="961.0" layoutY="514.0" mnemonicParsing="false" onAction="#retourAcceuil" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: white;" text="Acceuil">
+                     <font>
+                        <Font name="Consolas Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <AnchorPane layoutX="28.0" layoutY="58.0" prefHeight="432.0" prefWidth="449.0">
+                     <children>
+                        <ImageView fitHeight="492.0" fitWidth="550.0" layoutX="-2.0" layoutY="-44.0">
+                           <image>
+                              <Image url="@../Welcome-PNG-Transparent.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <Label layoutX="600.0" layoutY="190.0" prefHeight="47.0" prefWidth="449.0" style="-fx-background-color: #6A61E6;" text="Bienvenue dans l'espace de gestion,">
+                     <font>
+                        <Font name="Bell MT Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="600.0" layoutY="237.0" prefHeight="37.0" prefWidth="449.0" style="-fx-background-color: #6A61E6;" text="ou vous pouvez gérer tous les modules de l'agence">
+                     <font>
+                        <Font name="Bell MT Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="dateLabelUtilisateur" layoutX="748.0" layoutY="40.0" prefHeight="37.0" prefWidth="301.0" text="Aujourd'hui : 45 / 88 / 9870" textFill="#0e12dd">
+                     <font>
+                        <Font name="System Bold Italic" size="19.0" />
+                     </font></Label>
+                  <Label layoutX="600.0" layoutY="274.0" prefHeight="37.0" prefWidth="449.0" style="-fx-background-color: #6A61E6;" text="en clickant sur le boutton du module concerné.">
+                     <font>
+                        <Font name="Bell MT Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane layoutX="501.0" layoutY="347.0" prefHeight="168.0" prefWidth="404.0">
+                     <children>
+                        <ImageView fitHeight="204.0" fitWidth="404.0">
+                           <image>
+                              <Image url="@../flèche.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="-66.0" layoutY="143.0" prefHeight="47.0" prefWidth="449.0" text="Veuillez choisir les modules que vous voulez gérer">
+                           <font>
+                              <Font name="Bodoni MT Bold Italic" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
             </children>
         </StackPane>
-        <Label fx:id="gestionTitre" alignment="CENTER" layoutX="454.0" prefHeight="92.0" prefWidth="646.0" text="Gestion des véhicules">
+        <Label fx:id="gestionTitre" alignment="CENTER" layoutX="454.0" prefHeight="92.0" prefWidth="646.0" text="Espace de gestion">
             <font>
                 <Font name="Arial Black" size="35.0" />
             </font>

@@ -1,5 +1,6 @@
 package administration;
 
+import animatefx.animation.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +11,9 @@ import javafx.stage.StageStyle;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
+
+import java.time.temporal.ChronoUnit;
 
 public class Main extends Application {
 
@@ -19,11 +23,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("fxmls/utilisateurMenu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxmls/acceuil.fxml"));
         primaryStage.setTitle("Menu d'utilisateur");
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
+        new ZoomIn(root).play();
 
         PreparedStatement pat;
         Connection con = null;
@@ -100,6 +106,7 @@ public class Main extends Application {
                     "    dateDepart VARCHAR(255) DEFAULT \" \",\n" +
                     "    dateRetour VARCHAR(255) DEFAULT \" \",\n" +
                     "    is_annulee INTEGER DEFAULT 0,\n" +
+                    "    date_validation VARCHAR(100) DEFAULT \" \",\n" +
                     "    is_valid INTEGER DEFAULT 0)");
 
             rs = pat.execute();
@@ -113,7 +120,8 @@ public class Main extends Application {
             pat = con.prepareStatement("CREATE TABLE IF NOT EXISTS facture (id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
                     "    codeFacture VARCHAR(100) DEFAULT \" \",\n" +
                     "    dateFacture VARCHAR(255) DEFAULT \" \",\n" +
-                    "    montant VARCHAR(255) DEFAULT \" \")");
+                    "    montant VARCHAR(255) DEFAULT \" \", \n" +
+                    "    montantSanction VARCHAR(100) DEFAULT \"0\")");
 
             rs = pat.execute();
 
@@ -129,6 +137,23 @@ public class Main extends Application {
                     "    matricule VARCHAR(255) DEFAULT \" \",\n" +
                     "    codeClient VARCHAR(255) DEFAULT \" \",\n" +
                     "    codeFacture VARCHAR(255) DEFAULT \" \" )");
+
+            rs = pat.execute();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            con = DBConnect.getConnection();
+            pat = con.prepareStatement("CREATE TABLE IF NOT EXISTS client (id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+                    "    cin VARCHAR(100) DEFAULT \" \",\n" +
+                    "    nom VARCHAR(100) DEFAULT \" \",\n" +
+                    "    prenom VARCHAR(100) DEFAULT \" \",\n" +
+                    "    adresse VARCHAR(255) DEFAULT \" \",\n" +
+                    "    tel VARCHAR(100) DEFAULT \" \",\n" +
+                    "    imgPermis VARCHAR(255) DEFAULT \" \", \n" +
+                    "    is_sanctionné INTEGER DEFAULT 0)");
 
             rs = pat.execute();
 

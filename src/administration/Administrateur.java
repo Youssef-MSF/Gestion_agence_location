@@ -31,10 +31,8 @@ public class Administrateur extends Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Ajout avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "L'ajout n'est pas réalisé :(");
                 return false;
             }
 
