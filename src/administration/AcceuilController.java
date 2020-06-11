@@ -1,4 +1,4 @@
-package administration.controllers;
+package administration;
 
 import animatefx.animation.*;
 import javafx.event.ActionEvent;
@@ -35,7 +35,7 @@ public class AcceuilController implements Initializable {
     }
 
     public void start(Stage primaryStage, String fxmlFichier) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../fxmls/"+fxmlFichier));
+        Parent root = FXMLLoader.load(getClass().getResource("fxmls/"+fxmlFichier));
         primaryStage.setTitle("adminMenu");
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root));

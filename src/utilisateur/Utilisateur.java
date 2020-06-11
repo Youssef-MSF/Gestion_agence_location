@@ -1,7 +1,6 @@
 package utilisateur;
 
 import administration.DBConnect;
-import administration.controllers.UtilisateurMenuController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import modules.*;
@@ -128,10 +127,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Ajout avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "L'ajout n'est pas réalisé :(");
                 return false;
             }
 
@@ -154,10 +151,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Suppression avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "La suppression n'est pas réalisé :(");
                 return false;
             }
 
@@ -184,10 +179,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Modification avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "La modification n'est pas réalisé :(");
                 return false;
             }
 
@@ -264,10 +257,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Ajout avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "L'ajout n'est pas réalisé :(");
                 return false;
             }
 
@@ -288,10 +279,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Suppression avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "La suppression n'est pas réalisé :(");
                 return false;
             }
 
@@ -316,10 +305,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Modification avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "La modification n'est pas réalisé :(");
                 return false;
             }
 
@@ -341,10 +328,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Le véhicule a été bien déposer.");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "Le véhicule n'est pas déposée correctement.");
                 return false;
             }
 
@@ -365,10 +350,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Le véhicule a été bien sortis de son parking.");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "Le véhicule n'est pas sortis correctement.");
                 return false;
             }
 
@@ -389,10 +372,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Le véhicule a été bien réstituer.");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "Le véhicule n'est pas réstituer correctement.");
                 return false;
             }
 
@@ -498,10 +479,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Ajout avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "L'ajout n'est pas réalisé :(");
                 return false;
             }
 
@@ -524,10 +503,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Suppression avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "La suppression n'est pas réalisé :(");
                 return false;
             }
 
@@ -551,10 +528,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Modification avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "La modification n'est pas réalisé :(");
                 return false;
             }
 
@@ -636,10 +611,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Ajout avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "L'ajout n'est pas réalisé :(");
                 return false;
             }
 
@@ -660,10 +633,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Suppression avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "La suppression n'est pas réalisé :(");
                 return false;
             }
 
@@ -687,10 +658,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Modification avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "La modification n'est pas réalisé :(");
                 return false;
             }
 
@@ -850,10 +819,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Ajout avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "L'ajout n'est pas réalisé :(");
                 return false;
             }
 
@@ -874,10 +841,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Suppression avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "La suppression n'est pas réalisé :(");
                 return false;
             }
 
@@ -903,10 +868,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Modification avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "La modification n'est pas réalisé :(");
                 return false;
             }
 
@@ -988,10 +951,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Ajout avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "L'ajout n'est pas réalisé :(");
                 return false;
             }
 
@@ -1012,10 +973,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Suppression avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "La suppression n'est pas réalisé :(");
                 return false;
             }
 
@@ -1038,10 +997,8 @@ public class Utilisateur {
             rs = pat.execute();
 
             if (!rs) {
-                JOptionPane.showMessageDialog(null, "Modification avec succès !!");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "La modification n'est pas réalisé :(");
                 return false;
             }
 

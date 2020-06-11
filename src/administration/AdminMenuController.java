@@ -1,4 +1,4 @@
-package administration.controllers;
+package administration;
 
 import administration.Administrateur;
 import administration.DBConnect;
@@ -134,7 +134,7 @@ public class AdminMenuController implements Initializable {
     ObservableList<Utilisateur> oblist = FXCollections.observableArrayList();
 
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../fxmls/utilisateurMenu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxmls/utilisateurMenu.fxml"));
         primaryStage.setTitle("adminMenu");
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root));
@@ -254,9 +254,11 @@ public class AdminMenuController implements Initializable {
 
     public void retourAcceuil(ActionEvent actionEvent) throws IOException {
 
+        ((Node) actionEvent.getSource()).getScene().getWindow().hide();
+
         Stage acceuil = new Stage();
 
-        Parent root = FXMLLoader.load(getClass().getResource("../fxmls/acceuil.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxmls/acceuil.fxml"));
         acceuil.initStyle(StageStyle.UNDECORATED);
         acceuil.setScene(new Scene(root));
         acceuil.show();
@@ -323,6 +325,7 @@ public class AdminMenuController implements Initializable {
     public void passerAuxModules(ActionEvent actionEvent) throws Exception {
         Stage autreModules = new Stage();
         start(autreModules);
+        ((Node) actionEvent.getSource()).getScene().getWindow().hide();
     }
 
     public void exit(ActionEvent actionEvent) {

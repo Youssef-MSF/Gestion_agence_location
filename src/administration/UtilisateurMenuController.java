@@ -1,4 +1,4 @@
-package administration.controllers;
+package administration;
 
 import administration.DBConnect;
 import javafx.collections.FXCollections;
@@ -685,60 +685,7 @@ public class UtilisateurMenuController implements Initializable {
         }
     }
 
-    //Les traitements liées au gestion des véhicules
-
-    @FXML
-    void SaveVehicule(ActionEvent event) {
-
-        Vehicule nouveauVehicule = new Vehicule(matriculeField.getText(), marqueField.getText(), typeField.getText(), carburantField.getText(), Double.parseDouble(compteurField.getText()), dateCirculationField.getValue().toString());
-
-        utilisateur.modifierVehicule(nouveauVehicule);
-
-        matriculeField.setText("");
-        marqueField.setText("");
-        typeField.setText("");
-        carburantField.setText("");
-        compteurField.setText("");
-        dateCirculationField.setValue(null);
-
-        this.populateVehiculeListe();
-
-    }
-
-    @FXML
-    public void afficherListeVehicules(ActionEvent event) {
-
-        vehiculeListe.toFront();
-
-        populateVehiculeListe();
-
-    }
-
-    @FXML
-    void ajouterVehicule(ActionEvent event) {
-
-        if (matriculeField.getText().equals("") || marqueField.getText().equals("") || typeField.getText().equals("") || carburantField.getText().equals("") || compteurField.getText().equals("") || dateCirculationField.getValue() == null) {
-            JOptionPane.showMessageDialog(null, "Veuillez remplir les champs s'il vous plait !!");
-        } else {
-
-            Vehicule nouveauVehicule = new Vehicule(matriculeField.getText(), marqueField.getText(), typeField.getText(), carburantField.getText(), Double.parseDouble(compteurField.getText()), dateCirculationField.getValue().toString());
-
-            utilisateur.ajouterVehicule(nouveauVehicule);
-
-            matriculeField.setText("");
-            marqueField.setText("");
-            typeField.setText("");
-            carburantField.setText("");
-            compteurField.setText("");
-            dateCirculationField.setValue(null);
-
-            populateVehiculeListe();
-
-        }
-
-        this.populateComboxes();
-
-    }
+    // Fonction pour la gestion des clicks de boutton de menu principal
 
     @FXML
     void handleClicks(ActionEvent event) {
@@ -809,7 +756,7 @@ public class UtilisateurMenuController implements Initializable {
             gestionTitre.setText("Gestion des clients");
             gestionClients.toFront();
         } else if (event.getSource() == btnSanctions) {
-            listeClientSanctionneLabel.setText("Liste des clients sanctionnés jusqu'à "+LocalDate.now());
+            listeClientSanctionneLabel.setText("Liste des clients sanctionnés jusqu'à " + LocalDate.now());
             parkingImageContainer1.toFront();
             btnSanctions.setStyle("-fx-background-color:#9656CD");
             btnClients.setStyle("");
@@ -823,6 +770,69 @@ public class UtilisateurMenuController implements Initializable {
         }
     }
 
+    //Les traitements liées au gestion des véhicules
+
+    @FXML
+    void SaveVehicule(ActionEvent event) {
+
+        Vehicule nouveauVehicule = new Vehicule(matriculeField.getText(), marqueField.getText(), typeField.getText(), carburantField.getText(), Double.parseDouble(compteurField.getText()), dateCirculationField.getValue().toString());
+
+        if (utilisateur.modifierVehicule(nouveauVehicule)) {
+
+            JOptionPane.showMessageDialog(null, "Modification avec succès !!");
+        } else {
+            JOptionPane.showMessageDialog(null, "La modification n'est pas réalisé :(");
+        }
+        matriculeField.setText("");
+        marqueField.setText("");
+        typeField.setText("");
+        carburantField.setText("");
+        compteurField.setText("");
+        dateCirculationField.setValue(null);
+
+        this.populateVehiculeListe();
+
+    }
+
+    @FXML
+    public void afficherListeVehicules(ActionEvent event) {
+
+        vehiculeListe.toFront();
+
+        populateVehiculeListe();
+
+    }
+
+    @FXML
+    void ajouterVehicule(ActionEvent event) {
+
+        if (matriculeField.getText().equals("") || marqueField.getText().equals("") || typeField.getText().equals("") || carburantField.getText().equals("") || compteurField.getText().equals("") || dateCirculationField.getValue() == null) {
+            JOptionPane.showMessageDialog(null, "Veuillez remplir les champs s'il vous plait !!");
+        } else {
+
+            Vehicule nouveauVehicule = new Vehicule(matriculeField.getText(), marqueField.getText(), typeField.getText(), carburantField.getText(), Double.parseDouble(compteurField.getText()), dateCirculationField.getValue().toString());
+
+            if (utilisateur.ajouterVehicule(nouveauVehicule)) {
+                JOptionPane.showMessageDialog(null, "Ajout avec succès !!");
+            } else {
+                JOptionPane.showMessageDialog(null, "L'ajout n'est pas réalisé :(");
+            }
+
+            matriculeField.setText("");
+            marqueField.setText("");
+            typeField.setText("");
+            carburantField.setText("");
+            compteurField.setText("");
+            dateCirculationField.setValue(null);
+
+            populateVehiculeListe();
+
+        }
+
+        this.populateComboxes();
+
+    }
+
     @FXML
     void modifierVehicule(ActionEvent event) {
 
@@ -831,11 +841,13 @@ public class UtilisateurMenuController implements Initializable {
     }
 
     @FXML
-    void retourAcceuil(ActionEvent event) throws IOException {
+    void retourAcceuil(ActionEvent actionEvent) throws IOException {
+
+        ((Node) actionEvent.getSource()).getScene().getWindow().hide();
 
         Stage acceuil = new Stage();
 
-        Parent root = FXMLLoader.load(getClass().getResource("../fxmls/acceuil.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxmls/acceuil.fxml"));
         acceuil.initStyle(StageStyle.UNDECORATED);
         acceuil.setScene(new Scene(root));
         acceuil.show();
@@ -849,7 +861,12 @@ public class UtilisateurMenuController implements Initializable {
 
         Vehicule vehiculeASupprimer = new Vehicule(matriculeField.getText(), marqueField.getText(), typeField.getText(), carburantField.getText(), Double.parseDouble(compteurField.getText()), dateCirculationField.getValue().toString());
 
-        utilisateur.supprimerVehicule(vehiculeASupprimer);
+        if (utilisateur.supprimerVehicule(vehiculeASupprimer)) {
+
+            JOptionPane.showMessageDialog(null, "Suppression avec succès !!");
+        } else {
+            JOptionPane.showMessageDialog(null, "La suppression n'est pas réalisé :(");
+        }
 
         this.populateVehiculeListe();
 
@@ -915,7 +932,13 @@ public class UtilisateurMenuController implements Initializable {
             JOptionPane.showMessageDialog(null, "Veuillez remplir les champs s'il vous plait !!");
         } else {
             Parking nouveauParking = new Parking(codeParkingField.getText(), Integer.parseInt(capaciteField.getText()), rueField.getText(), arrondissementField.getText(), Integer.parseInt(nbrePlacesVidesField.getText()));
-            utilisateur.ajouterParking(nouveauParking);
+
+            if (utilisateur.ajouterParking(nouveauParking)) {
+
+                JOptionPane.showMessageDialog(null, "Ajout avec succès !!");
+            } else {
+                JOptionPane.showMessageDialog(null, "L'ajout n'est pas réalisé :(");
+            }
 
             this.populateVehiculeListeParParking();
 
@@ -940,7 +963,12 @@ public class UtilisateurMenuController implements Initializable {
 
         Parking parkingASupprimer = new Parking(codeParkingField.getText(), Integer.parseInt(capaciteField.getText()), rueField.getText(), arrondissementField.getText(), Integer.parseInt(nbrePlacesVidesField.getText()));
 
-        utilisateur.supprimerParking(parkingASupprimer);
+        if (utilisateur.supprimerParking(parkingASupprimer)) {
+
+            JOptionPane.showMessageDialog(null, "Suppression avec succès !!");
+        } else {
+            JOptionPane.showMessageDialog(null, "La suppression n'est pas réalisé :(");
+        }
 
         this.populateVehiculeListeParParking();
 
@@ -986,7 +1014,12 @@ public class UtilisateurMenuController implements Initializable {
 
         Parking nouveauParking = new Parking(codeParkingField.getText(), Integer.parseInt(capaciteField.getText()), rueField.getText(), arrondissementField.getText(), Integer.parseInt(nbrePlacesVidesField.getText()));
 
-        utilisateur.modifierParking(nouveauParking);
+        if (utilisateur.modifierParking(nouveauParking)) {
+
+            JOptionPane.showMessageDialog(null, "Modification avec succès !!");
+        } else {
+            JOptionPane.showMessageDialog(null, "La modification n'est pas réalisé :(");
+        }
 
         this.populateVehiculeListeParParking();
 
@@ -1163,7 +1196,11 @@ public class UtilisateurMenuController implements Initializable {
         String selectedMatriculeComboBox = vehiculeComboBox.getSelectionModel().getSelectedItem();
         String selectedCodeParkingComboBox = parkingComboBox.getSelectionModel().getSelectedItem();
 
-        utilisateur.deposerVehiculeDansParking(selectedMatriculeComboBox, selectedCodeParkingComboBox);
+        if (utilisateur.deposerVehiculeDansParking(selectedMatriculeComboBox, selectedCodeParkingComboBox)) {
+            JOptionPane.showMessageDialog(null, "Le véhicule a été bien déposé.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Le véhicule n'est pas déposé correctement.");
+        }
 
         this.populateVehiculeListeParParking();
         this.populateComboxes();
@@ -1185,7 +1222,11 @@ public class UtilisateurMenuController implements Initializable {
 
         String matriculeFaireSortir = matriculeComboBoxSortir.getSelectionModel().getSelectedItem();
 
-        utilisateur.faireSortirVehiculeDuParking(matriculeFaireSortir);
+        if (utilisateur.faireSortirVehiculeDuParking(matriculeFaireSortir)) {
+            JOptionPane.showMessageDialog(null, "Le véhicule a été bien sortis de son parking.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Le véhicule n'est pas sortis correctement.");
+        }
 
         this.populateComboxes();
 
@@ -1195,7 +1236,11 @@ public class UtilisateurMenuController implements Initializable {
 
         String matriculeArestituer = matriculeRestituer.getSelectionModel().getSelectedItem();
 
-        utilisateur.restituerVehicule(matriculeArestituer);
+        if (utilisateur.restituerVehicule(matriculeArestituer)) {
+            JOptionPane.showMessageDialog(null, "Le véhicule a été bien réstitué.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Le véhicule n'est pas réstité correctement.");
+        }
 
         this.populateComboxes();
 
@@ -1298,7 +1343,12 @@ public class UtilisateurMenuController implements Initializable {
 
         } else {
             Contrat nouveauContrat = new Contrat(nContartfield.getText(), dateContratField.getValue().toString(), dateEcheanceContratField.getValue().toString());
-            utilisateur.ajouterContrat(nouveauContrat);
+
+            if (utilisateur.ajouterContrat(nouveauContrat)) {
+                JOptionPane.showMessageDialog(null, "Ajout avec succès !!");
+            } else {
+                JOptionPane.showMessageDialog(null, "L'ajout n'est pas réalisé :(");
+            }
 
             this.populateContratListe();
 
@@ -1358,7 +1408,11 @@ public class UtilisateurMenuController implements Initializable {
         this.selectionnerContrat();
         Contrat contratASupprimer = new Contrat(nContartfield.getText(), dateContratField.getValue().toString(), dateEcheanceContratField.getValue().toString());
 
-        utilisateur.supprimerContrat(contratASupprimer);
+        if (utilisateur.supprimerContrat(contratASupprimer)) {
+            JOptionPane.showMessageDialog(null, "Suppression avec succès !!");
+        } else {
+            JOptionPane.showMessageDialog(null, "La suppression n'est pas réalisé :(");
+        }
 
         this.populateContratListe();
 
@@ -1380,7 +1434,12 @@ public class UtilisateurMenuController implements Initializable {
     public void saveContrat(ActionEvent actionEvent) {
 
         Contrat nouveauContrat = new Contrat(nContartfield.getText(), dateContratField.getValue().toString(), dateEcheanceContratField.getValue().toString());
-        utilisateur.modifierContrat(nouveauContrat);
+
+        if (utilisateur.modifierContrat(nouveauContrat)) {
+            JOptionPane.showMessageDialog(null, "Modification avec succès !!");
+        } else {
+            JOptionPane.showMessageDialog(null, "La modification n'est pas réalisé :(");
+        }
 
         this.populateComboxes();
 
@@ -1427,7 +1486,12 @@ public class UtilisateurMenuController implements Initializable {
         } else {
 
             Reservation nouvelleReservation = new Reservation(codeReservationField.getText(), dateReservationField.getValue().toString(), dateDepartField.getValue().toString(), dateRetourField.getValue().toString());
-            utilisateur.ajouterReservation(nouvelleReservation);
+
+            if (utilisateur.ajouterReservation(nouvelleReservation)) {
+                JOptionPane.showMessageDialog(null, "Ajout avec succès !!");
+            } else {
+                JOptionPane.showMessageDialog(null, "L'ajout n'est pas réalisé :(");
+            }
 
             this.populateReservationListe();
 
@@ -1494,7 +1558,11 @@ public class UtilisateurMenuController implements Initializable {
 
         Reservation reservationASupprimer = new Reservation(codeReservationField.getText(), dateReservationField.getValue().toString(), dateDepartField.getValue().toString(), dateRetourField.getValue().toString());
 
-        utilisateur.supprimerReservation(reservationASupprimer);
+        if (utilisateur.supprimerReservation(reservationASupprimer)) {
+            JOptionPane.showMessageDialog(null, "Suppression avec succès !!");
+        } else {
+            JOptionPane.showMessageDialog(null, "La suppression n'est pas réalisé :(");
+        }
 
         this.populateReservationListe();
 
@@ -1508,6 +1576,8 @@ public class UtilisateurMenuController implements Initializable {
     }
 
     public void afficherListeReservation(ActionEvent actionEvent) {
+
+        listeReservations.toFront();
 
         this.populateReservationListe();
 
@@ -1557,7 +1627,12 @@ public class UtilisateurMenuController implements Initializable {
 
     public void saveReservation(ActionEvent actionEvent) {
         Reservation reservationAModifier = new Reservation(codeReservationField.getText(), dateReservationField.getValue().toString(), dateDepartField.getValue().toString(), dateRetourField.getValue().toString());
-        utilisateur.modifierReservation(reservationAModifier);
+
+        if (utilisateur.modifierReservation(reservationAModifier)) {
+            JOptionPane.showMessageDialog(null, "Modification avec succès !!");
+        } else {
+            JOptionPane.showMessageDialog(null, "La modification n'est pas réalisé :(");
+        }
 
         this.populateReservationListe();
 
@@ -1605,7 +1680,11 @@ public class UtilisateurMenuController implements Initializable {
 
             Facture nouvelleFacture = new Facture(codeFactureField.getText(), dateFactureField.getValue().toString(), Double.parseDouble(montantPayerField.getText()));
 
-            utilisateur.ajouterFacture(nouvelleFacture);
+            if (utilisateur.ajouterFacture(nouvelleFacture)) {
+                JOptionPane.showMessageDialog(null, "Ajout avec succès !!");
+            } else {
+                JOptionPane.showMessageDialog(null, "L'ajout n'est pas réalisé :(");
+            }
 
             this.populateFactureListe();
 
@@ -1660,7 +1739,11 @@ public class UtilisateurMenuController implements Initializable {
 
         Facture factureASupprimer = new Facture(codeFactureField.getText(), dateFactureField.getValue().toString(), Double.parseDouble(montantPayerField.getText()));
 
-        utilisateur.supprimerFacture(factureASupprimer);
+        if (utilisateur.supprimerFacture(factureASupprimer)) {
+            JOptionPane.showMessageDialog(null, "Suppression avec succès !!");
+        } else {
+            JOptionPane.showMessageDialog(null, "La suppression n'est pas réalisé :(");
+        }
 
         this.populateFactureListe();
 
@@ -1674,13 +1757,20 @@ public class UtilisateurMenuController implements Initializable {
 
     public void afficherListeFacture(ActionEvent actionEvent) {
 
+        listeFactures.toFront();
+
         this.populateFactureListe();
 
     }
 
     public void saveFacture(ActionEvent actionEvent) {
         Facture factureAModifier = new Facture(codeFactureField.getText(), dateFactureField.getValue().toString(), Double.parseDouble(montantPayerField.getText()));
-        utilisateur.modifierFacture(factureAModifier);
+
+        if (utilisateur.modifierFacture(factureAModifier)) {
+            JOptionPane.showMessageDialog(null, "Modification avec succès !!");
+        } else {
+            JOptionPane.showMessageDialog(null, "La modification n'est pas réalisé :(");
+        }
 
         this.populateFactureListe();
 
@@ -1725,7 +1815,11 @@ public class UtilisateurMenuController implements Initializable {
 
             Client nouveauClient = new Client(codeClientField.getText(), nomClientField.getText(), prenomClientField.getText(), adresseClientField.getText(), telClientField.getText(), imgPermisName.getText());
 
-            utilisateur.ajouterClient(nouveauClient);
+            if (utilisateur.ajouterClient(nouveauClient)) {
+                JOptionPane.showMessageDialog(null, "Ajout avec succès !!");
+            } else {
+                JOptionPane.showMessageDialog(null, "L'ajout n'est pas réalisé :(");
+            }
 
             this.populateCLientListe();
 
@@ -1753,7 +1847,11 @@ public class UtilisateurMenuController implements Initializable {
 
         Client clientASupprimer = new Client(codeClientField.getText(), nomClientField.getText(), prenomClientField.getText(), adresseClientField.getText(), telClientField.getText(), imgPermisName.getText());
 
-        utilisateur.supprimerClient(clientASupprimer);
+        if (utilisateur.supprimerClient(clientASupprimer)) {
+            JOptionPane.showMessageDialog(null, "Suppression avec succès !!");
+        } else {
+            JOptionPane.showMessageDialog(null, "La suppression n'est pas réalisé :(");
+        }
 
         this.populateCLientListe();
 
@@ -1770,6 +1868,8 @@ public class UtilisateurMenuController implements Initializable {
 
     public void afficherListeCLient(ActionEvent actionEvent) {
 
+        listeClients.toFront();
+
         this.populateCLientListe();
 
     }
@@ -1777,7 +1877,12 @@ public class UtilisateurMenuController implements Initializable {
     public void saveClient(ActionEvent actionEvent) {
 
         Client clientAModifier = new Client(codeClientField.getText(), nomClientField.getText(), prenomClientField.getText(), adresseClientField.getText(), telClientField.getText(), imgPermisName.getText());
-        utilisateur.modifierClient(clientAModifier);
+
+        if (utilisateur.modifierClient(clientAModifier)) {
+            JOptionPane.showMessageDialog(null, "Modification avec succès !!");
+        } else {
+            JOptionPane.showMessageDialog(null, "La modification n'est pas réalisé :(");
+        }
 
         this.populateCLientListe();
 

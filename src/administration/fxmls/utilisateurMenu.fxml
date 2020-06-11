@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="1381.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="administration.controllers.UtilisateurMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="1381.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="administration.UtilisateurMenuController">
     <children>
         <VBox prefHeight="673.0" prefWidth="301.0" style="-fx-background-color: #CFCEE6;">
             <children>
@@ -215,7 +215,7 @@
                                     <children>
                                         <ImageView fx:id="imgParking11" fitHeight="465.0" fitWidth="573.0" visible="true">
                                             <image>
-                                                <Image url="@../parking.jpg" />
+                                                <Image url="@../reservation.jpg" />
                                             </image>
                                         </ImageView>
                                     </children>
@@ -300,7 +300,7 @@
                                     <children>
                                         <ImageView fx:id="imgParking1" fitHeight="465.0" fitWidth="573.0" visible="true">
                                             <image>
-                                                <Image url="@../parking.jpg" />
+                                                <Image url="@../contrat.jpg" />
                                             </image>
                                         </ImageView>
                                     </children>
@@ -515,81 +515,37 @@
                         <Button fx:id="btnDeposerRestituer11" layoutX="358.0" layoutY="468.0" mnemonicParsing="false" onAction="#restituerOpenAnchor" prefHeight="47.0" prefWidth="81.0" style="-fx-background-color: #63AED9;" stylesheets="@../css/style.css" text="Réstituer" textFill="WHITE" />
                     </children>
                 </AnchorPane>
-                <AnchorPane fx:id="gestionFactures" layoutX="10.0" layoutY="10.0" prefHeight="554.0" prefWidth="945.0" style="-fx-background-color: #B1ADEE;">
+                <AnchorPane fx:id="gestionSanctions" layoutX="10.0" layoutY="10.0" prefHeight="554.0" prefWidth="945.0" style="-fx-background-color: #B1ADEE;">
                     <children>
-                        <Button fx:id="btnAjouterFacture" layoutX="18.0" layoutY="309.0" mnemonicParsing="false" onAction="#ajouterFacture" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Ajouter" textFill="WHITE" />
-                        <Button fx:id="btnModifierFacture" layoutX="18.0" layoutY="365.0" mnemonicParsing="false" onAction="#modifierFacture" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Modifier" textFill="WHITE" />
-                        <Button fx:id="btnSupprimerFacture" layoutX="235.0" layoutY="309.0" mnemonicParsing="false" onAction="#supprimerFacture" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Supprimer" textFill="WHITE" />
-                        <Button fx:id="btnAfficherListesFacture" layoutX="235.0" layoutY="365.0" mnemonicParsing="false" onAction="#afficherListeFacture" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Liste des factures" textFill="WHITE" />
-                        <Button fx:id="acceuil1111" layoutX="394.0" layoutY="522.0" mnemonicParsing="false" onAction="#retourAcceuil" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: white;" text="Acceuil">
+                        <Button fx:id="btnafficherListeClientSanctionnes" layoutX="45.0" layoutY="197.0" mnemonicParsing="false" onAction="#afficherListeClientSanctionnes" prefHeight="57.0" prefWidth="207.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Afficher liste des clients sanctionné" textFill="WHITE" />
+                        <Label fx:id="listeClientSanctionneLabel" layoutX="299.0" layoutY="31.0" prefHeight="47.0" prefWidth="638.0" text="Liste des clients sanctionnés:">
                             <font>
-                                <Font name="Consolas Bold" size="13.0" />
-                            </font>
-                        </Button>
-                        <Button fx:id="btnSaveModifFacture" layoutX="58.0" layoutY="449.0" mnemonicParsing="false" onAction="#saveFacture" prefHeight="37.0" prefWidth="119.0" style="-fx-background-color: #3BAF56;" stylesheets="@../css/style.css" text="Enregistrer" textFill="WHITE" />
-                        <TextField fx:id="rechercherFactureField" layoutX="804.0" layoutY="50.0" prefHeight="37.0" prefWidth="207.0" promptText="Entrer un numéro de facture" />
-                        <Label layoutX="531.0" layoutY="46.0" prefHeight="47.0" prefWidth="268.0" text="Rechercher une réservation:">
-                            <font>
-                                <Font name="Cambria" size="21.0" />
+                                <Font name="System Bold Italic" size="26.0" />
                             </font>
                         </Label>
-                        <StackPane layoutX="493.0" layoutY="100.0">
+                        <TableView fx:id="listeClientSanctionne" layoutX="300.0" layoutY="113.0" prefHeight="440.0" prefWidth="709.0" stylesheets="@../css/style.css">
+                            <columns>
+                                <TableColumn fx:id="col_codeClientSanctionne" prefWidth="116.0" text="CIN CLient" />
+                                <TableColumn fx:id="col_codeReservationSanctionne" prefWidth="218.0" text="N° de réservation correspondant" />
+                                <TableColumn fx:id="col_codeCOntratSanctionne" minWidth="0.0" prefWidth="118.0" text="N° de contrat" />
+                                <TableColumn fx:id="col_matriculeSanctionne" minWidth="0.0" prefWidth="115.0" text="Véhicule aloué" />
+                                <TableColumn fx:id="col_montantSanction" minWidth="8.0" prefWidth="141.0" text="Montant des sanctions" />
+                            </columns>
+                        </TableView>
+                        <AnchorPane fx:id="reglerSanctionAnchor" layoutX="14.0" layoutY="321.0" prefHeight="96.0" prefWidth="268.0">
                             <children>
-                                <AnchorPane fx:id="parkingImageContainer111" prefHeight="453.0" prefWidth="453.0">
-                                    <children>
-                                        <ImageView fx:id="imgParking111" fitHeight="465.0" fitWidth="573.0" visible="true">
-                                            <image>
-                                                <Image url="@../parking.jpg" />
-                                            </image>
-                                        </ImageView>
-                                    </children>
-                                </AnchorPane>
-                                <TableView fx:id="listeFactures" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/style.css">
-                                    <columns>
-                                        <TableColumn fx:id="col_codeFacture" prefWidth="205.0" text="N° de facture" />
-                                        <TableColumn fx:id="col_dateFacture" prefWidth="181.0" text="Date de facture" />
-                                        <TableColumn fx:id="col_montant" prefWidth="185.0" text="Montant à payer" />
-                                    </columns>
-                                </TableView>
+                                <CheckBox fx:id="reglerSanctionCheck" layoutX="8.0" layoutY="21.0" mnemonicParsing="false" onAction="#reglerSanction" text="Marquer comme réglée">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </CheckBox>
                             </children>
-                        </StackPane>
-                        <Button fx:id="btnChercherFacture" layoutX="1000.0" layoutY="50.0" mnemonicParsing="false" onAction="#chercherFacture" prefHeight="37.0" prefWidth="56.0" stylesheets="@../css/style.css">
-                            <graphic>
-                                <FontAwesomeIconView glyphName="SEARCH" size="30" />
-                            </graphic>
-                        </Button>
-                        <StackPane layoutX="1.0" layoutY="1.0">
-                            <children>
-                                <AnchorPane fx:id="principaleFieldsAnchor111" prefHeight="299.0" prefWidth="449.0" style="-fx-background-color: #B1ADEE;">
-                                    <children>
-                                        <TextField fx:id="codeFactureField" layoutX="13.0" layoutY="47.0" prefHeight="37.0" prefWidth="165.0" promptText="N° de facture" />
-                                        <Label layoutX="15.0" layoutY="10.0" prefHeight="30.0" prefWidth="136.0" text="N° facture:">
-                                            <font>
-                                                <Font name="Algerian" size="16.0" />
-                                            </font>
-                                        </Label>
-                                        <Label layoutX="260.0" layoutY="10.0" prefHeight="30.0" prefWidth="182.0" text="date  de facture:">
-                                            <font>
-                                                <Font name="Algerian" size="16.0" />
-                                            </font>
-                                        </Label>
-                                        <DatePicker fx:id="dateFactureField" layoutX="260.0" layoutY="47.0" prefHeight="37.0" prefWidth="174.0" promptText="Date de facture" />
-                                        <TextField fx:id="montantPayerField" layoutX="15.0" layoutY="156.0" prefHeight="37.0" prefWidth="165.0" promptText="Montant à payer" />
-                                        <Label layoutX="17.0" layoutY="119.0" prefHeight="30.0" prefWidth="165.0" text="montant à payer:">
-                                            <font>
-                                                <Font name="Algerian" size="16.0" />
-                                            </font>
-                                        </Label>
-                                        <Label layoutX="15.0" layoutY="230.0" prefHeight="30.0" prefWidth="207.0" text="facture pour contrat:">
-                                            <font>
-                                                <Font name="Algerian" size="16.0" />
-                                            </font>
-                                        </Label>
-                                        <ComboBox fx:id="listeContratsCombobox" layoutX="227.0" layoutY="227.0" prefHeight="37.0" prefWidth="207.0" promptText="Liste des contrats disponibles" />
-                                    </children>
-                                </AnchorPane>
-                            </children>
-                        </StackPane>
+                        </AnchorPane>
+                  <Button fx:id="acceuil2" layoutX="202.0" layoutY="514.0" mnemonicParsing="false" onAction="#retourAcceuil" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: white;" text="Acceuil">
+                     <font>
+                        <Font name="Consolas Bold" size="13.0" />
+                     </font>
+                  </Button>
                     </children>
                 </AnchorPane>
                 <AnchorPane fx:id="gestionClients" layoutX="10.0" layoutY="10.0" prefHeight="554.0" prefWidth="945.0" style="-fx-background-color: #B1ADEE;">
@@ -612,15 +568,6 @@
                         </Label>
                         <StackPane layoutX="493.0" layoutY="100.0">
                             <children>
-                                <AnchorPane fx:id="parkingImageContainer1111" prefHeight="453.0" prefWidth="453.0">
-                                    <children>
-                                        <ImageView fx:id="imgParking1111" fitHeight="465.0" fitWidth="573.0" visible="true">
-                                            <image>
-                                                <Image url="@../parking.jpg" />
-                                            </image>
-                                        </ImageView>
-                                    </children>
-                                </AnchorPane>
                                 <TableView fx:id="listeClients" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/style.css">
                                     <columns>
                                         <TableColumn fx:id="col_cin" prefWidth="81.0" text="CIN" />
@@ -630,6 +577,15 @@
                                         <TableColumn fx:id="col_adresse" prefWidth="159.0" text="Adresse" />
                                     </columns>
                                 </TableView>
+                                <AnchorPane fx:id="parkingImageContainer1111" prefHeight="453.0" prefWidth="453.0">
+                                    <children>
+                                        <ImageView fx:id="imgParking1111" fitHeight="465.0" fitWidth="573.0" visible="true">
+                                            <image>
+                                                <Image url="@../client.jpg" />
+                                            </image>
+                                        </ImageView>
+                                    </children>
+                                </AnchorPane>
                             </children>
                         </StackPane>
                         <Button fx:id="btnChercherClient" layoutX="1000.0" layoutY="50.0" mnemonicParsing="false" onAction="#chercherClient" prefHeight="37.0" prefWidth="56.0" stylesheets="@../css/style.css">
@@ -684,37 +640,81 @@
                         <Label fx:id="imgPermisName" layoutX="193.0" layoutY="292.0" prefHeight="30.0" prefWidth="274.0" />
                     </children>
                 </AnchorPane>
-                <AnchorPane fx:id="gestionSanctions" layoutX="10.0" layoutY="10.0" prefHeight="554.0" prefWidth="945.0" style="-fx-background-color: #B1ADEE;">
+                <AnchorPane fx:id="gestionFactures" layoutX="10.0" layoutY="10.0" prefHeight="554.0" prefWidth="945.0" style="-fx-background-color: #B1ADEE;">
                     <children>
-                        <Button fx:id="btnafficherListeClientSanctionnes" layoutX="45.0" layoutY="197.0" mnemonicParsing="false" onAction="#afficherListeClientSanctionnes" prefHeight="57.0" prefWidth="207.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Afficher liste des clients sanctionné" textFill="WHITE" />
-                        <Label fx:id="listeClientSanctionneLabel" layoutX="299.0" layoutY="31.0" prefHeight="47.0" prefWidth="638.0" text="Liste des clients sanctionnés:">
+                        <Button fx:id="btnAjouterFacture" layoutX="18.0" layoutY="309.0" mnemonicParsing="false" onAction="#ajouterFacture" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Ajouter" textFill="WHITE" />
+                        <Button fx:id="btnModifierFacture" layoutX="18.0" layoutY="365.0" mnemonicParsing="false" onAction="#modifierFacture" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Modifier" textFill="WHITE" />
+                        <Button fx:id="btnSupprimerFacture" layoutX="235.0" layoutY="309.0" mnemonicParsing="false" onAction="#supprimerFacture" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Supprimer" textFill="WHITE" />
+                        <Button fx:id="btnAfficherListesFacture" layoutX="235.0" layoutY="365.0" mnemonicParsing="false" onAction="#afficherListeFacture" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: #282490;" stylesheets="@../css/style.css" text="Liste des factures" textFill="WHITE" />
+                        <Button fx:id="acceuil1111" layoutX="394.0" layoutY="522.0" mnemonicParsing="false" onAction="#retourAcceuil" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: white;" text="Acceuil">
                             <font>
-                                <Font name="System Bold Italic" size="26.0" />
+                                <Font name="Consolas Bold" size="13.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="btnSaveModifFacture" layoutX="58.0" layoutY="449.0" mnemonicParsing="false" onAction="#saveFacture" prefHeight="37.0" prefWidth="119.0" style="-fx-background-color: #3BAF56;" stylesheets="@../css/style.css" text="Enregistrer" textFill="WHITE" />
+                        <TextField fx:id="rechercherFactureField" layoutX="804.0" layoutY="50.0" prefHeight="37.0" prefWidth="207.0" promptText="Entrer un numéro de facture" />
+                        <Label layoutX="531.0" layoutY="46.0" prefHeight="47.0" prefWidth="268.0" text="Rechercher une réservation:">
+                            <font>
+                                <Font name="Cambria" size="21.0" />
                             </font>
                         </Label>
-                        <TableView fx:id="listeClientSanctionne" layoutX="300.0" layoutY="113.0" prefHeight="440.0" prefWidth="709.0" stylesheets="@../css/style.css">
-                            <columns>
-                                <TableColumn fx:id="col_codeClientSanctionne" prefWidth="116.0" text="CIN CLient" />
-                                <TableColumn fx:id="col_codeReservationSanctionne" prefWidth="218.0" text="N° de réservation correspondant" />
-                                <TableColumn fx:id="col_codeCOntratSanctionne" minWidth="0.0" prefWidth="118.0" text="N° de contrat" />
-                                <TableColumn fx:id="col_matriculeSanctionne" minWidth="0.0" prefWidth="115.0" text="Véhicule aloué" />
-                                <TableColumn fx:id="col_montantSanction" minWidth="8.0" prefWidth="141.0" text="Montant des sanctions" />
-                            </columns>
-                        </TableView>
-                        <AnchorPane fx:id="reglerSanctionAnchor" layoutX="14.0" layoutY="321.0" prefHeight="96.0" prefWidth="268.0">
+                        <StackPane layoutX="493.0" layoutY="100.0">
                             <children>
-                                <CheckBox fx:id="reglerSanctionCheck" layoutX="8.0" layoutY="21.0" mnemonicParsing="false" onAction="#reglerSanction" text="Marquer comme réglée">
-                                    <font>
-                                        <Font name="System Bold" size="18.0" />
-                                    </font>
-                                </CheckBox>
+                                <TableView fx:id="listeFactures" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/style.css">
+                                    <columns>
+                                        <TableColumn fx:id="col_codeFacture" prefWidth="205.0" text="N° de facture" />
+                                        <TableColumn fx:id="col_dateFacture" prefWidth="181.0" text="Date de facture" />
+                                        <TableColumn fx:id="col_montant" prefWidth="185.0" text="Montant à payer" />
+                                    </columns>
+                                </TableView>
+                                <AnchorPane fx:id="parkingImageContainer111" prefHeight="453.0" prefWidth="453.0">
+                                    <children>
+                                        <ImageView fx:id="imgParking111" fitHeight="465.0" fitWidth="573.0" visible="true">
+                                            <image>
+                                                <Image url="@../facture.jpg" />
+                                            </image>
+                                        </ImageView>
+                                    </children>
+                                </AnchorPane>
                             </children>
-                        </AnchorPane>
-                  <Button fx:id="acceuil2" layoutX="202.0" layoutY="514.0" mnemonicParsing="false" onAction="#retourAcceuil" prefHeight="37.0" prefWidth="69.0" style="-fx-background-color: white;" text="Acceuil">
-                     <font>
-                        <Font name="Consolas Bold" size="13.0" />
-                     </font>
-                  </Button>
+                        </StackPane>
+                        <Button fx:id="btnChercherFacture" layoutX="1000.0" layoutY="50.0" mnemonicParsing="false" onAction="#chercherFacture" prefHeight="37.0" prefWidth="56.0" stylesheets="@../css/style.css">
+                            <graphic>
+                                <FontAwesomeIconView glyphName="SEARCH" size="30" />
+                            </graphic>
+                        </Button>
+                        <StackPane layoutX="1.0" layoutY="1.0">
+                            <children>
+                                <AnchorPane fx:id="principaleFieldsAnchor111" prefHeight="299.0" prefWidth="449.0" style="-fx-background-color: #B1ADEE;">
+                                    <children>
+                                        <TextField fx:id="codeFactureField" layoutX="13.0" layoutY="47.0" prefHeight="37.0" prefWidth="165.0" promptText="N° de facture" />
+                                        <Label layoutX="15.0" layoutY="10.0" prefHeight="30.0" prefWidth="136.0" text="N° facture:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="260.0" layoutY="10.0" prefHeight="30.0" prefWidth="182.0" text="date  de facture:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <DatePicker fx:id="dateFactureField" layoutX="260.0" layoutY="47.0" prefHeight="37.0" prefWidth="174.0" promptText="Date de facture" />
+                                        <TextField fx:id="montantPayerField" layoutX="15.0" layoutY="156.0" prefHeight="37.0" prefWidth="165.0" promptText="Montant à payer" />
+                                        <Label layoutX="17.0" layoutY="119.0" prefHeight="30.0" prefWidth="165.0" text="montant à payer:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="15.0" layoutY="230.0" prefHeight="30.0" prefWidth="207.0" text="facture pour contrat:">
+                                            <font>
+                                                <Font name="Algerian" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <ComboBox fx:id="listeContratsCombobox" layoutX="227.0" layoutY="227.0" prefHeight="37.0" prefWidth="207.0" promptText="Liste des contrats disponibles" />
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </StackPane>
                     </children>
                 </AnchorPane>
             <AnchorPane fx:id="gestionSanctions1" layoutX="10.0" layoutY="10.0" prefHeight="554.0" prefWidth="945.0" style="-fx-background-color: #B1ADEE;">

@@ -1,4 +1,4 @@
-package administration.controllers;
+package administration;
 
 import administration.DBConnect;
 import javafx.event.ActionEvent;
@@ -31,7 +31,7 @@ public class UtilisateurLoginController {
     private Button exit;
 
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../fxmls/utilisateurMenu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxmls/utilisateurMenu.fxml"));
         primaryStage.setTitle("adminMenu");
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root));

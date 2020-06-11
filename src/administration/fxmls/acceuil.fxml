@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="622.0" prefWidth="1228.0" style="-fx-background-color: #B1ADEE;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="administration.controllers.AcceuilController">
+<AnchorPane prefHeight="622.0" prefWidth="1228.0" style="-fx-background-color: #B1ADEE;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="administration.AcceuilController">
    <children>
       <Label fx:id="titreLabel" layoutX="20.0" layoutY="6.0" prefHeight="131.0" prefWidth="630.0" text="Agence de location" textAlignment="CENTER" underline="true">
          <font>
