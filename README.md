@@ -17,8 +17,8 @@ Project is created with:
 	
 ## Setup
 To run this project follow these steps:
- > Download JavaFX library and intergrate it in your project
- > Download Sqlite jdbc for java and integrate it in your projec
- > run the main function in Main class
+ > -Download JavaFX library and intergrate it in your project
+ > -Download Sqlite jdbc for java and integrate it in your projec
+ > -Run the main function in Main class
 
 ### Hope you like it :-)
